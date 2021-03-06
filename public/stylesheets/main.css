@@ -38,7 +38,16 @@
   max-width: 100%;
 }
 
-orm {
+body {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  font-family: 'Raleway', sans-serif;
+  align-content: center;
+  text-align: center;
+  color: #000000;
+}
+
+form {
   display: grid;
   padding: 1em;
   background: #f9f9f9;
