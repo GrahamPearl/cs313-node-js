@@ -24,7 +24,8 @@ function calculateRate(mail_type, weight, zone) {
     break;
     case "4": cost = 40;
     break;
-  };
+    default: cost = 50;
+  }
   return cost;
 };
 
