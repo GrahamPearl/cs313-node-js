@@ -14,7 +14,7 @@
 
     <form action="/report" method="post">
         <label for="weight">Weight:</label>
-        <input name="weight" type="number" /> <br />
+        <input name="weight" type="number" min="1" step="any"/> <br />
         <label for="type">Type of mail:</label>
         <select id="type" name="type" onchange="showDiv('hidden_div', this)">
             <option value="1">Letters (Stamped)</option>
@@ -22,12 +22,11 @@
             <option value="3">Large Envelopes (Flats)</option>
             <option value="4">First-Class Package Service—Retail</option>
             <option value="5">Other..</option>
-
             <input type="submit" value="Submit" />
 
             <div id="hidden_div">
                 <label for="zone">Zone:</label>
-                <input name="zone" type="number" /><br />
+                <input name="zone" type="number" min="1" max="7"/><br />
             </div>
     </form>
 
