@@ -18,10 +18,8 @@ express()
       //var amountOwe = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
       var amountOwe = 100; //calculateRate("1", 1, 1);
       var params = {
-        weight: req.body.weight,
-        type: req.body.type,
         amount: 100
-      }
+      };
       res.render("pages/report", params);
     } catch (err) {
       console.log('Error - will need to resolve');
