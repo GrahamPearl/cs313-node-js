@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-closest(arrWeight, arrCost, closestTo) {
+function closest(arrWeight, arrCost, closestTo) {
   var closest = 0; 
 
   for (var i = 0; i < arrWeight.length; i++) { 
@@ -12,21 +12,21 @@ closest(arrWeight, arrCost, closestTo) {
   return arrCost[closest]; 
 };
 
-calculateRate = function (mail_type, weight, zone) {
+function calculateRate(mail_type, weight, zone) {
   let cost = 200;
   switch (mail_type)
   {
-    case "1": cost = closest([1, 2, 3, 3.5],[0.51, 0.71, 0.91, 1.11],weight);
+    case "1": cost = 10; //closest([1, 2, 3, 3.5],[0.51, 0.71, 0.91, 1.11],weight);
     break;
-    case "2":
+    case "2": cost = 20;
     break;  
-    case "3":
+    case "3": cost = 30;
     break;
-    case "4":    
+    case "4": cost = 40;
     break;
-  }
+  };
   return cost;
-}
+};
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
