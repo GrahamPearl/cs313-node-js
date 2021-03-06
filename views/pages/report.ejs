@@ -9,13 +9,17 @@
 
     <%- include ("../partials/nav.ejs") %>
 
-    <h1>USPS Postal / Mail Service</h1>
+    <h1>UPS Postal / Mail Service</h1>
     <h2>Mailing Cost Report</h2>
     <form>
-        <Your Order: </h2> <p> Weight: <%= weight %> </p>
-            <p> Type: <%= type %> </p>
-            <p> Amount: <%= amount %> </p>
-    </form>
+        <label for="weight">Weight:</label>
+        <input name="weight" type="number" value='<%= weight %>'/> 
+        <label for="type"> Type:</label>
+        <input name="weight" type="number" value='<%= type %>'/> 
+        <label for="amount"> Amount:</label>
+        <input name="weight" type="number" value='<%= amount %>'/>             
+    </form>    
+    <p>Total Amount: <%= amount %> </p>
 </body>
 
 </html>
