@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
-    <body>
-        <h1>Mailing Cost Report</h1>
-        <h2><Your Order: </h2>
-        <p> Weight: <%= weight %> </p>
-        <p>   Type: <%= type %> </p>                
-        <p> Amount: <%= amount %> </p>        
-    </body>
+
+<head>
+    <%- include ("../partials/header.ejs") %>
+</head>
+
+<body <%- include ("../partials/nav.ejs") %> 
+    <h1>USPS Postal / Mail Service</h1>
+    <h2>Mailing Cost Report</h2>
+    <form>
+        <Your Order: </h2> <p> Weight: <%= weight %> </p>
+            <p> Type: <%= type %> </p>
+            <p> Amount: <%= amount %> </p>
+    </form>
+</body>
+
 </html>
