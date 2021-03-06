@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <form action="/report" method="post">
+        <label for="weight">Weight:</label>
+        <input name="weight" type="number" /> <br />
+        <label for="type">Type of mail:</label>
+        <select id="type" name="type" onchange="showDiv('hidden_div', this)">
+            <option value="1">Letters (Stamped)</option>
+            <option value="2">Letters (Metered)</option>
+            <option value="3">Large Envelopes (Flats)</option>
+            <option value="4">First-Class Package Service—Retail</option>
+            <option value="5">Other..</option>
+
+            <input type="submit" value="Submit" />
+
+            <div id="hidden_div">
+                <label for="zone">Zone:</label>
+                <input name="zone" type="number" /><br />
+            </div>
+    </form>
+
+    <style>
+        #hidden_div {
+            display: none;
+        }
+    </style>
+    <script>
+        function showDiv(divId, element) {
+            document.getElementById(divId).style.display = element.value == "4" ? 'block' : 'none';
+        }
+    </script>
+</body>
+
+</html>
