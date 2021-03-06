@@ -2,8 +2,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-var models = require('./models/logic.js');
-
+const models = require('./models/logic.js');
 const logic = new Logic();
 
 express()

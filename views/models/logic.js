@@ -1,5 +1,5 @@
-class Logic {
-    closest(arr, closestTo) {
+/*
+closest(arr, closestTo) {
         var closest = Math.max.apply(null, arr); //Get the highest number in arr in case it match nothing.
 
         for (var i = 0; i < arr.length; i++) { //Loop the array
@@ -8,11 +8,13 @@ class Logic {
 
         return closest; // return the value
     };
+*/
 
-
+class Logic {
+    
     calculateRate(mail_type, weight, zone) {
         return 100;
-    };
+    }
 }
 
 module.exports = Logic;
