@@ -12,7 +12,8 @@ express()
   .get('/', (req, res) => res.render('pages/postmail'))
   .post('/report', (req, res) => {
     try{    
-    const amountOwe = logic.calculateRate(req.body.type, req.body.weight, req.body.zone)
+      const amountOwe = logic.calculateRate("1",1,1);
+    //const amountOwe = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
 
     var params = {
       weight: req.body.weight
