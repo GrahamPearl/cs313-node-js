@@ -13,17 +13,15 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/postmail'))
   .post('/report', (req, res) => {
-    try{          
+    try {
       //var logic = require('./models/logic.js');            
       //var amountOwe = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
-      var amountOwe = calculateRate("1",1,1);
-    
-
-    var params = {
-      weight: req.body.weight
-      ,type: req.body.type      
-      ,amount: 100
-    }
+      var amountOwe = 100; //calculateRate("1", 1, 1);
+      var params = {
+        weight: req.body.weight,
+        type: req.body.type,
+        amount: 100
+      }
       res.render("pages/report", params);
     } catch (err) {
       res.render("pages/error-report");
