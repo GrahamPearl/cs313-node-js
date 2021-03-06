@@ -24,7 +24,8 @@ express()
       }
       res.render("pages/report", params);
     } catch (err) {
-      res.render("pages/error-report");
+      console.log('Error - will need to resolve');
+      //res.render("pages/error-report");
     }
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
