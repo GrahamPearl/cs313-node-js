@@ -4,9 +4,7 @@ const PORT = process.env.PORT || 5000
 
 var bodyParser = require("body-parser");
 
-function calculateRate(mail_type, weight, zone) {
-  return 100;
-}
+var models = require('./models/logic');
 
 express()
   .use(bodyParser.urlencoded({
@@ -21,7 +19,7 @@ express()
     var params = {
       weight: req.body.weight
       ,type: req.body.type      
-      ,amount: calculateRate(req.body.type, req.body.weight, req.body.zone)
+      ,amount: models.calculateRate(req.body.type, req.body.weight, req.body.zone)
     }
     res.render("pages/report", params);
   })
