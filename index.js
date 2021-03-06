@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-const models = require('./models/logic.js');
+const logic = require('./models/logic.js');
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -11,9 +11,7 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/postmail'))
   .post('/report', (req, res) => {
-    try{
-          
-    var logic = new Logic();
+    try{    
     const amountOwe = logic.calculateRate(req.body.type, req.body.weight, req.body.zone)
 
     var params = {
