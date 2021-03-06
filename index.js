@@ -16,11 +16,17 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/postmail'))
   .post('/report', (req, res) => {
+    try{
+    var amountOwe = models.calculateRate(req.body.type, req.body.weight, req.body.zone)
+
     var params = {
       weight: req.body.weight
       ,type: req.body.type      
-      ,amount: models.calculateRate(req.body.type, req.body.weight, req.body.zone)
+      ,amount: amountOwe
     }
-    res.render("pages/report", params);
+      res.render("pages/report", params);
+    } catch (err) {
+      res.render("pages/error-report");
+    }
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
