@@ -2,8 +2,30 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+closest(arrWeight, arrCost, closestTo) {
+  var closest = 0; 
+
+  for (var i = 0; i < arrWeight.length; i++) { 
+      if (arrWeight[i] >= arrWeight[closestTo] && arrWeight[i] < closest) closestTo = i; 
+  }
+
+  return arrCost[closest]; 
+};
+
 calculateRate = function (mail_type, weight, zone) {
-  return 100;
+  let cost = 200;
+  switch (mail_type)
+  {
+    case "1": cost = closest([1, 2, 3, 3.5],[0.51, 0.71, 0.91, 1.11],weight);
+    break;
+    case "2":
+    break;  
+    case "3":
+    break;
+    case "4":    
+    break;
+  }
+  return cost;
 }
 
 express()
@@ -14,9 +36,9 @@ express()
   .get('/', (req, res) => res.render('pages/postmail'))
   .post('/report', (req, res) => {
     try {
-      var logic = require('./models/logic.js');            
-      var amountOwed = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
-      //var amountOwe = 100; //calculateRate("1", 1, 1);
+      //var logic = require('./models/logic.js');            
+      //var amountOwed = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
+      var amountOwe = calculateRate("1", 1, 1);
       var params = {
         amount: amountOwed
       };

@@ -1,0 +1,4 @@
+weight:1,   cost:0.51
+weight:2,	cost:0.71
+weight:3,	cost:0.91
+weight:3.5,	cost:1.11
