@@ -14,11 +14,11 @@ express()
   .get('/', (req, res) => res.render('pages/postmail'))
   .post('/report', (req, res) => {
     try {
-      //var logic = require('./models/logic.js');            
-      //var amountOwe = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
-      var amountOwe = 100; //calculateRate("1", 1, 1);
+      var logic = require('./models/logic.js');            
+      var amountOwed = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
+      //var amountOwe = 100; //calculateRate("1", 1, 1);
       var params = {
-        amount: 100
+        amount: amountOwed
       };
       res.render("pages/report", params);
     } catch (err) {
