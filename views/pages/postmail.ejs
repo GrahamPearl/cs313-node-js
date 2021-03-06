@@ -3,11 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-
-<body>
+    <%- include ("../partials/header.ejs") %>
+  </head>
+  
+  <body>
+  
+    <%- include ("../partials/nav.ejs") %>
     <form action="/report" method="post">
         <label for="weight">Weight:</label>
         <input name="weight" type="number" /> <br />
