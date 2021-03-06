@@ -2,6 +2,10 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+calculateRate = function (mail_type, weight, zone) {
+  return 100;
+}
+
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(express.static(path.join(__dirname, 'views/models')))
@@ -10,9 +14,10 @@ express()
   .get('/', (req, res) => res.render('pages/postmail'))
   .post('/report', (req, res) => {
     try{          
-      var logic = require('./models/logic.js');            
-      var amountOwe = logic.calculateRate("1",1,1);
-    //const amountOwe = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
+      //var logic = require('./models/logic.js');            
+      //var amountOwe = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
+      var amountOwe = calculateRate("1",1,1);
+    
 
     var params = {
       weight: req.body.weight
