@@ -10,11 +10,7 @@ closest(arr, closestTo) {
     };
 */
 
-class Logic {
-    
-    calculateRate(mail_type, weight, zone) {
-        return 100;
-    }
-}
 
-module.exports = Logic;
+module.exports.calculateRate = function (mail_type, weight, zone) {
+    return 100;
+}
