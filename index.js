@@ -39,13 +39,13 @@ express()
     try {
       //var logic = require('./models/logic.js');            
       //var amountOwed = logic.calculateRate(req.body.type, req.body.weight, req.body.zone);
-      var amountOwe = calculateRate("1", 1, 1);
+      var amountOwed = calculateRate("1", 1, 1);
       var params = {
         amount: amountOwed
       };
       res.render("pages/report", params);
     } catch (err) {
-      console.log('Error - will need to resolve');
+      console.log('Error - will need to resolve:', err);
       //res.render("pages/error-report");
     }
   })
