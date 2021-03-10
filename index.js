@@ -2,6 +2,8 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+const Week9 = require('week9');
+
 var bodyParser = require("body-parser");
 
 express()
@@ -14,8 +16,10 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/week9', (req, res) => res.render('pages/postmail'))
-  .post('/report', (req, res) => {
+  .post('/week9/report', (req, res) => {
     try {      
+      
+      Week9().handle_week9();
       var params = {
         amount: amountOwed
       };
