@@ -1,6 +1,8 @@
 class Week9 extends Object {
-  closest(arr, closestTo) {
-    var closest = Math.max.apply(null, arr);
+  static urlResponse = "pages/postmail_report";
+
+  static closest(arr, closestTo) {
+    let closest = Math.max.apply(null, arr);
 
     for (var i = 0; i < arr.length; i++) {
       if (arr[i] >= closestTo && arr[i] < closest) closest = arr[i];
@@ -9,7 +11,7 @@ class Week9 extends Object {
     return closest; // return the value
   };
 
-  calculateRate(mail_type, weight, zone) {
+  static calculateRate(mail_type, weight, zone) {
     let cost = 200;
     let weights = [];
     let amount = [];
@@ -17,7 +19,7 @@ class Week9 extends Object {
     switch (mail_type) {
       case "1":
         weights = [1, 2, 3, 3.5];
-        index = [this.closest(weights, weight)];
+        index = [Week9.closest(weights, weight)];
 
         amount = [0.55, 0.75, 0.95, 1.15];
         cost = amount[index - 1];
@@ -25,7 +27,7 @@ class Week9 extends Object {
 
       case "2":
         weights = [1, 2, 3, 3.5];
-        index = [this.closest(weights, weight)];
+        index = [Week9.closest(weights, weight)];
 
         amount = [0.51, 0.71, 0.91, 1.11];
         cost = amount[index - 1];
@@ -33,7 +35,7 @@ class Week9 extends Object {
 
       case "3":
         weights = [1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-        index = [this.closest(weights, weight)];
+        index = [Week9.closest(weights, weight)];
 
         amount = [1.00, 1.20, 1.40, 1.60, 1.80, 2.00, 2.20, 2.40, 2.60, 2.80, 3.00, 3.20, 3.40];
         cost = amount[index - 1];
@@ -41,7 +43,7 @@ class Week9 extends Object {
 
       case "4":
         weights = [1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-        index = [this.closest(weights, weight)];
+        index = [Week9.closest(weights, weight)];
         amount = [
           [4.00, 4.00, 4.00, 4.00, 4.80, 4.80, 4.80, 4.80, 5.50, 5.50, 5.50, 5.50, 6.25],
           [4.00, 4.00, 4.00, 4.00, 4.80, 4.80, 4.80, 4.80, 5.50, 5.50, 5.50, 5.50, 6.25],
@@ -61,13 +63,17 @@ class Week9 extends Object {
     return cost;
   };
 
+  setURL() {
+    
+  }
+
   handle_week9(req, res) {
     try {
-      var amountOwed = this.calculateRate(req.body.type, req.body.weight, req.body.zone);
+      var amountOwed = Week9.calculateRate(req.body.type, req.body.weight, req.body.zone);
       var params = {
         amount: amountOwed
       };
-      res.render("pages/report", params);
+      res.render(Week9.urlResponse, params);
     } catch (err) {
       console.log('Error - will need to resolve:', err);
       //res.render("pages/error-report");
