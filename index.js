@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-const Week9 = require('./week9');
+const Week9 = require('./models/week9');
 
 var bodyParser = require("body-parser");
 
