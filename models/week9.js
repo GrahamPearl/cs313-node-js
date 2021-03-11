@@ -67,7 +67,7 @@ class Week9 extends Object {
     
   }
 
-  handle_week9(req, res) {
+  execute(req, res) {
     try {
       var amountOwed = Week9.calculateRate(req.body.type, req.body.weight, req.body.zone);
       var params = {
