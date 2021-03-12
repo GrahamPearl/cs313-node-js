@@ -2,8 +2,10 @@ const {
   Pool
 } = require("pg");
 
-//let URI = 'postgres://eyrisxdztiubpj:c8ca45cbe5b9cf11038936746236f52eb49c76f384467bb2e27c7e4f7bc26bf0@ec2-54-242-43-231.compute-1.amazonaws.com:5432/dbadu7beav50j0'
-let URI = "postgres://reg_user:family@localhost:5432/familyhistory";
+let URI = 'postgres://eyrisxdztiubpj:c8ca45cbe5b9cf11038936746236f52eb49c76f384467bb2e27c7e4f7bc26bf0@ec2-54-242-43-231.compute-1.amazonaws.com:5432/dbadu7beav50j0'
+//let URI = "postgres://reg_user:family@localhost:5432/familyhistory";
+//let URI = "postgres://aaddvlkmqfxouy:family@localhost:5432/familyhistory";
+
 const connectionString = process.env.DATABASE_URL || URI
 const pool = new Pool({
   connectionString: connectionString
