@@ -3,14 +3,14 @@ const {
 } = require("pg");
 
 const uriHeroku = 'postgres://eyrisxdztiubpj:c8ca45cbe5b9cf11038936746236f52eb49c76f384467bb2e27c7e4f7bc26bf0@ec2-54-242-43-231.compute-1.amazonaws.com:5432/dbadu7beav50j0';
+//const uriHeroku = 'postgres://eyrisxdztiubpj:c8ca45cbe5b9cf11038936746236f52eb49c76f384467bb2e27c7e4f7bc26bf0@ec2-54-242-43-231.compute-1.amazonaws.com:5432/dbadu7beav50j0';
 const uriLocal = 'postgres://reg_user:family@localhost:5432/familyhistory';
 
 var URI = '';
 if (process.env._.indexOf("heroku") !== -1)
 {
-  //URI = uriHeroku;
-  URI = process.env.DATABASE_URL;
-  ssl:true;
+  URI = uriHeroku;
+  //URI = process.env.DATABASE_URL;
   console.log("Running on Heroku:5432");
 }
 else
