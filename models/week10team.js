@@ -54,12 +54,10 @@ class Week10Team extends Object {
         });
       } else {
         
-        var params = {};
-        result.forEach(element => { 
-          console.log(element); 
-        });                
-
-        const matches = result.rows;
+        //var params = { result: JSON.stringify(result[0]) };
+        //response.render(Week10Team.urlResponse, params);        
+        
+        const matches = result[0];
         response.status(200).json(matches);
       }
     });
@@ -93,12 +91,14 @@ class Week10Team extends Object {
       var isConnected = Week10Team.connect();
       Week10Team.getPerson(req, res);
 
+      /*
       var params = {
         headers: ["id", "last", "first"]
        ,rows: new Array(4).fill(undefined)
      };
 
      res.render(Week10Team.urlResponse, params);        
+     */
      
     } catch (err) {
       console.log('Error - will need to resolve:', err);
