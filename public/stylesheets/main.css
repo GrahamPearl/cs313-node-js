@@ -59,13 +59,12 @@ input:focus {
   }
 
   form {
-    grid-template-columns: 200px 1fr;
-    grid-gap: 16px;
+    grid-template-columns: 200px 1fr;    
   }
 
   form .columm1 {
     grid-template-columns: 1fr;
-    grid-gap: 16px;
+    grid-gap: 1px;
   }
 
   label {
