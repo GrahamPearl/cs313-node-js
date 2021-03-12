@@ -92,7 +92,7 @@ input:focus {
 @media (min-width: 400px) {
 
   body {
-    background-image: url('images/bg-400.jpg');
+    background-image: url('./images/bg-400.png');
   }
 
   form {

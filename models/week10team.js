@@ -5,23 +5,31 @@ const {
 //let URI = 'postgres://eyrisxdztiubpj:c8ca45cbe5b9cf11038936746236f52eb49c76f384467bb2e27c7e4f7bc26bf0@ec2-54-242-43-231.compute-1.amazonaws.com:5432/dbadu7beav50j0'
 let URI = "postgres://reg_user:family@localhost:5432/familyhistory";
 const connectionString = process.env.DATABASE_URL || URI
+const pool = new Pool({
+  connectionString: connectionString
+});
 
 class Week10Team extends Object {
   static urlResponse = "pages/week10Team_report";
 
-  connect() {
-    const pool = new Pool({
-      connectionString: connectionString
-    });
+  static connect() {
+    try {
+      const pool = new Pool({
+        connectionString: connectionString
+      });
+      return true;
+    } catch (err) {
+      console.log('Error - will need to resolve:', err);
+      return false;
+    }
   }
 
   static createTable() {}
 
-  getPerson(request, response) {
-    const last_name = request.query.last_name;
-    const first_name = request.query.first_name;
+  static getPerson(request, response) {
+    const id = request.query.id;
 
-    getPersonFromDb(last_name, first_name, function (error, result) {
+    Week10Team.getPersonFromDb([id], function (error, result) {
       if (error || result == null || result.length != 1) {
         response.status(500).json({
           success: false,
@@ -34,11 +42,12 @@ class Week10Team extends Object {
     });
   }
 
-  getPersonFromDb(last_name, first_name, callback) {
-    console.log("Getting person from DB with last_name & first_name: ");
 
-    const sql = "SELECT id, first, last, birthdate FROM person WHERE last = $1 AND first = $2";
-    const params = [last_name, first_name];
+  static getPersonFromDb(params, callback) {
+    console.log("Getting person from DB with params: " + params);
+
+    //const sql = "SELECT id, first, last, birthdate FROM person WHERE last = $1 AND first = $2";
+    const sql = "SELECT id, first, last, birthdate FROM person WHERE id = $1::int";
 
     pool.query(sql, params, function (err, result) {
       if (err) {
@@ -58,8 +67,8 @@ class Week10Team extends Object {
 
   execute(req, res) {
     try {
-      connect();
-      getPerson(req, res);
+      var isConnected = Week10Team.connect();
+      Week10Team.getPerson(req, res);
     } catch (err) {
       console.log('Error - will need to resolve:', err);
       //res.render("pages/error-report");
