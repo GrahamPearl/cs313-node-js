@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+    <%- include ("../partials/nav.ejs") %>
+
+    <h1>Family Search</h1>
+    <form action="/week10Team/report" method="post">
+        <label for="last_name">Last Name:</label>
+        <input name="last_name" type="text" /> <br />
+        <label for="first_name">First Name:</label>
+        <input name="first_name" type="text" /> <br />
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>

@@ -16,10 +16,12 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
+
   .get('/week9', (req, res) => res.render('pages/postmail'))
   .post('/week9/report', week9_task)
   .get('/week10Team', (req, res) => res.render('pages/week10Team'))
   .post('/week10Team/report', week10_task)
+  
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 function week9_task(req, res) {
