@@ -128,3 +128,32 @@ ul.no-bullets {
   padding: 16px;
   text-align: center;
 }
+
+.table-refresh {
+  min-width: 400px;
+  max-width: 100%;
+  font-size: 14px;
+}
+
+.table-refresh__table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 0 5px rgba(0,0, 0, 0.2);
+  border-bottom: 2px solid #532F8C;
+}
+
+.table-refresh__table thead tr {
+  background:#532F8C;
+  color:#fff;
+}
+
+.table-refresh__table th,
+.table-refresh__table td {
+  text-align: left;
+  padding: 9px 18px;
+  font-weight: normal;
+}
+
+.table-refresh__table tbody tr:nth-of-type(even) {
+  background:#eeeeee;
+}
