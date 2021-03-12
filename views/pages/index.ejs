@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <%- include ("../partials/header.ejs") %>
 </head>
@@ -8,52 +9,74 @@
 
   <%- include ("../partials/nav.ejs") %>
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/lang-logo.png">
-    </a>
-    <h1>Demonstration of Node.js Projects</h1>
-    <p>This is a collection of Node.js projects on Heroku, created by Graham Pearl.</p>    
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/GrahamPearl/cs313-node-js"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-  </div>
-</div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To  see each week's completed task, select the link below
-  </div>
-  <form>
-  <select></select>
-  <option></option>
-  </form>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> Week 9: US Postmail Task</h3>
-      <p>
-        This app demonstrates the using of pages with passing data by parameters
-        The site calculates the Postal Fee expected for type and weight of product selected.
-        <a href="/week9">Link to Project</a>
-      </p>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <a href="/" class="lang-logo">
+        <img src="/lang-logo.png">
+      </a>
+      <h1>Demonstration of Node.js Projects</h1>
+      <p>This is a collection of Node.js projects on Heroku, created by Graham Pearl.</p>
+      <a type="button" class="btn btn-lg btn-primary" href="https://github.com/GrahamPearl/cs313-node-js"><span
+          class="glyphicon glyphicon-download"></span> Source on GitHub</a>
     </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> Week 10: Team Task</h3>
-      <p>
-        This app demonstrates the using of progresSQL database connection.
-        <a href="/week10Team">Link to Project</a>
-      </p>
-    </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Week 10: Still in progress</h3>
-      <ul>        
-      </ul>      
-    </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do not submit a copy to your educational instution, as an assessment task solution.
   </div>
-</div>
+  <div class="container">    
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <h3><span class="glyphicon glyphicon-info-sign"></span> Week 10: Project Progress</h3>
+        <p>Project Description - High School Library Book Club Reviews</p>
+        <p>This app demonstrates the using of:
+          <ul class="no-bullets">
+            <li>ProgresSQL database connections</li>
+            <li>Local Storage using JavaScript</li>
+            <li>API calls to Google Books API as a consumer service</li>
+          </ul>
+
+          <a href="/week10Team">Link to Project</a>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h3><span class="glyphicon glyphicon-info-sign"></span> Week 9: US Postmail Task</h3>
+        <p>
+          This app demonstrates the using of pages with passing data by parameters
+          The site calculates the Postal Fee expected for type and weight of product selected.
+          <a href="/week9">Link to Project</a>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h3><span class="glyphicon glyphicon-info-sign"></span> Week 10: Team Task</h3>
+        <p>
+          This app demonstrates the using of progresSQL database connection.
+          <a href="/week10Team">Link to Project</a>
+        </p>
+      </div>
+
+      <div class="col-md-6">
+        <h3><span class="glyphicon glyphicon-link"></span> Week 10: Still in progress</h3>
+        <ul>
+        </ul>
+      </div>      
+    </div> <!-- row -->
+
+    <div class="alert alert-info text-center" role="alert">
+      To see each week's completed task, select the link below
+      <form>
+        <label for="task">Select Task:</label>
+        <select id="task" name="type">
+          <option>Project: node.js</option>
+          <option>Week 9 - Prove Task</option>
+          <option>Week 10 - Team Task</option>
+      </form>
+    </div>    
+    
+
+    <div class="alert alert-info text-center" role="alert">
+      Please do not submit a copy to your educational instution, as an assessment task solution.
+    </div>
+  </div>
 
 
 </body>
+
 </html>
