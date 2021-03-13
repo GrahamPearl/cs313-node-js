@@ -21,7 +21,7 @@ var app = express()
   .set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  if (process.env.MODE !== 'ADMIN') {
+  if (process.env.MODE === 'ADMIN') {
     res.render('pages/admin')
   } else {
     res.render('pages/index')
