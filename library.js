@@ -44,7 +44,7 @@ const addBook = (request, response) => {
 }
 
 app
-    .route('/books')
+        
     // GET endpoint
     .get(getBooks)
     // POST endpoint

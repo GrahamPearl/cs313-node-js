@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+    <%- include ("../partials/nav.ejs") %>
+
+    <h1>Book Search</h1>
+    <p>Enter details of the book that you want to search for</p>
+    <form action="/books/books_search" method="get">
+        <label for="id">ID:</label>
+        <input name="id" type="number" /> <br />
+        <label for="author">Author:</label>
+        <input name="author" type="text" /> <br />
+        <label for="title">Title:</label>
+        <input name="title" type="text" /> <br />
+        <input type="submit" value="Submit" />
+    </form>
+
+    <%- include ("../partials/card_nav.ejs") %>
+</body>
+
+</html>
