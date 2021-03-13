@@ -7,41 +7,17 @@ const {
 const uriLocal = 'postgres://reg_user:family@localhost:5432/familyhistory';
 
 var URI = '';
-if (process.env._.indexOf("heroku") !== -1)
-{
-  //URI = uriHeroku;
-  //URI = process.env.DATABASE_URL;
-  console.log("Running on Heroku:5432");
-}
-else
-{
+if (process.env._.indexOf("heroku") === -1) {
   URI = uriLocal;
-  console.log("Running on Localhost:5432");
 }
 
 const connectionString = process.env.DATABASE_URL || URI;
-
-
 const pool = new Pool({
   connectionString: connectionString
 });
 
 class Week10Team extends Object {
   static urlResponse = "pages/week10Team_report";
-
-  static connect() {
-    try {
-      const pool = new Pool({
-        connectionString: connectionString
-      });
-      return true;
-    } catch (err) {
-      console.log('Error - will need to resolve:', err);
-      return false;
-    }
-  }
-
-  static createTable() {}
 
   static getPerson(request, response) {
     const id = request.query.id;
@@ -53,10 +29,10 @@ class Week10Team extends Object {
           data: error
         });
       } else {
-        
+
         //var params = { result: JSON.stringify(result[0]) };
         //response.render(Week10Team.urlResponse, params);        
-        
+
         const matches = result[0];
         response.status(200).json(matches);
       }
@@ -70,36 +46,41 @@ class Week10Team extends Object {
     //const sql = "SELECT id, first, last, birthdate FROM person WHERE last = $1 AND first = $2";
     const sql = "SELECT id, first, last, birthdate FROM person WHERE id = $1::int";
 
-    pool.query(sql, params, function (err, result) {
-      if (err) {
-        console.log("Error in query: ")
-        console.log(err);
-        callback(err, null);
+    (async () => {
+      const client = await pool.connect()
+      try {
+        const res = await client.query(sql, params)
+          .then(res => {
+            var params = {
+              headers: ["id", "last", "first"],
+              rows: new Array(4).fill(undefined)
+            };
+
+            res.render(Week10Team.urlResponse, params);
+          })
+        console.table(res.rows)
+
+
+
+      } finally {
+        client.release()
       }
-
-      console.log("Found result: " + JSON.stringify(result.rows));
-      callback(null, result.rows);
-    });
-  }
-
-  static getTime() {
-    return NOW();
+    })().catch(err => console.log(err.stack))
   }
 
   execute(req, res) {
     try {
-      var isConnected = Week10Team.connect();
+      pool.on('error', (err, client) => {
+        console.error('Unexpected error on idle client', err)
+        process.exit(-1)
+      })
+
       Week10Team.getPerson(req, res);
 
       /*
-      var params = {
-        headers: ["id", "last", "first"]
-       ,rows: new Array(4).fill(undefined)
-     };
-
-     res.render(Week10Team.urlResponse, params);        
+      
      */
-     
+
     } catch (err) {
       console.log('Error - will need to resolve:', err);
       //res.render("pages/error-report");
