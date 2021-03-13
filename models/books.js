@@ -9,11 +9,16 @@ const uriLocal = 'postgres://api_user:password@localhost:5432/books_api';
 var URI = '';
 if (process.env._.indexOf("heroku") === -1) {
   URI = uriLocal;
+} else {
+  URI = process.env.DATABASE_URL
 }
 
 const connectionString = process.env.DATABASE_URL || URI;
 const pool = new Pool({
-  connectionString: connectionString
+  connectionString: connectionString,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 const getBooks = (request, response) => {

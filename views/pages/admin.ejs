@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+  <%- include ("../partials/nav.ejs") %>
+
+  <div class="jumbotron text-center">
+    <div class="container">
+      <a href="/" class="lang-logo">
+        <img src="/lang-logo.png">
+      </a>
+      <h1>Admin Mode</h1>
+      <p>This is a collection of Node.js projects on Heroku, created by Graham Pearl.</p>
+      <a type="button" class="btn btn-lg btn-primary" href="https://github.com/GrahamPearl/cs313-node-js"><span
+          class="glyphicon glyphicon-download"></span> Source on GitHub</a>
+    </div>
+  </div>
+  
+    <div class="alert alert-info text-center" role="alert">
+      To see each week's completed task, select the link below
+      <form action="/admin/execute" method="post">
+        <label for="task">Select Task:</label>
+        <select id="task" name="type">
+          <option value="1">Project: node.js</option>
+          <option value="2">Week 9 - Prove Task</option>
+          <option value="3">Week 10 - Team Task</option>
+          <input type="submit" value="Execute" />
+      </form>
+    </div>    
+    <a class="btn btn-primary" target="_blank" href="/admin/db">Test Database Connection</a>
+    <div class="alert alert-info text-center" role="alert">
+      Please do not submit a copy to your educational instution, as an assessment task solution.
+    </div>
+  </div>
+
+
+</body>
+
+</html>
