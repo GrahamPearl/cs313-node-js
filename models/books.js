@@ -2,8 +2,6 @@ const {
   Pool
 } = require("pg");
 
-//const uriHeroku = 'postgres://eyrisxdztiubpj:c8ca45cbe5b9cf11038936746236f52eb49c76f384467bb2e27c7e4f7bc26bf0@ec2-54-242-43-231.compute-1.amazonaws.com:5432/dbadu7beav50j0';
-//const uriHeroku = 'postgres://eyrisxdztiubpj:c8ca45cbe5b9cf11038936746236f52eb49c76f384467bb2e27c7e4f7bc26bf0@ec2-54-242-43-231.compute-1.amazonaws.com:5432/dbadu7beav50j0';
 const uriLocal = 'postgres://api_user:password@localhost:5432/books_api';
 
 var URI = '';
@@ -22,7 +20,7 @@ const pool = new Pool({
 });
 
 const getBooks = (request, response) => {
-   pool.query('SELECT * FROM books', (error, results) => {
+  pool.query('SELECT * FROM books', (error, results) => {
     if (error) {
       throw error
     }
@@ -34,6 +32,27 @@ const getBooks = (request, response) => {
     response.render(Books.urlResponse, params);
     //response.status(200).json(results.rows)
   })
+}
+
+const getBooksOnGoogle = (request, response) => {
+
+  var books = require('google-books-search');
+
+  books.search('Professional JavaScript for Web Developers', function (error, results) {
+    if (!error) {
+      console.log(results);
+
+      let params = results;
+      response.render(Books.urlResponse, params);
+      
+    } else {
+      console.log(error);
+      res.render("pages/error-report");
+    }
+  });
+
+  
+
 }
 
 const addBook = (request, response) => {
@@ -60,7 +79,7 @@ const addBook = (request, response) => {
 class Books extends Object {
   static urlResponse = "pages/books_report";
   static insertBook = addBook;
-  static searchEvent = getBooks;
+  static searchEvent = getBooksOnGoogle;
 
   execute(req, res) {
     try {
@@ -69,11 +88,10 @@ class Books extends Object {
         process.exit(-1)
       })
 
-      Books.searchEvent(req,res);
-      
+      Books.searchEvent(req, res);
+
     } catch (err) {
-      console.log('Error - will need to resolve:', err);
-      //res.render("pages/error-report");
+      console.log('Error - will need to resolve:', err);            
     }
   };
 }
