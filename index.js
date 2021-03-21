@@ -3,6 +3,7 @@ const path = require('path')
 const router_post = require('./routes/postmail');
 const router_library = require('./routes/library');
 const router_books = require('./routes/books');
+const router_patrons = require('./routes/patrons');
 const router_admin = require('./routes/admin');
 
 const PORT = process.env.PORT || 5000
@@ -31,5 +32,6 @@ app.get('/', (req, res) => {
 app.use('/postmail', router_post);
 app.use('/library', router_library);
 app.use('/books', router_books);
+app.use('/patrons', router_patrons);
 app.use('/admin', router_admin);
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
