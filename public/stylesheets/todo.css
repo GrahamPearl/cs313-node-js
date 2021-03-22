@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(120deg, #f6d365, #fda085);
+    color: white;
+}
+
+.todo {
+    margin: 0.5rem;
+    background: white;
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+
+}
+
+.todo li {
+    flex: 1;
+}
+
+.trashed-btn,
+.checked-btn {
+    background: #ff6f47;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size:1rem;
+}
+
+.checked-btn {
+    background: rgb(73,204,73)
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.select {
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.select::after {
+    content: "\25BC";    
+    position: absolute;
+    background: #ff6f47;
+    top:0;
+    right:0;
+    padding:1rem;
+    pointer-events: none;
+}
+
+select {
+    color: #ff6f47;
+    width: 10rem;
+    cursor: pointer;
+}

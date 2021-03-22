@@ -2,14 +2,16 @@ require('dotenv').config()
 
 const express = require('express')
 const path = require('path')
-const router_post = require('./routes/postmail');
-const router_library = require('./routes/library');
-const router_books = require('./routes/books');
-const router_patrons = require('./routes/patrons');
+
 const router_admin = require('./routes/admin');
+const router_books = require('./routes/books');
+const router_library = require('./routes/library');
+const router_patrons = require('./routes/patrons');
+const router_personal = require('./routes/personal');
+const router_post = require('./routes/postmail');
+const router_weeks = require('./routes/weeks');
 
 const PORT = process.env.PORT;
-
 
 var bodyParser = require("body-parser");
 
@@ -32,9 +34,12 @@ app.get('/', (req, res) => {
   }
 })
 
-app.use('/postmail', router_post);
-app.use('/library', router_library);
-app.use('/books', router_books);
-app.use('/patrons', router_patrons);
+
 app.use('/admin', router_admin);
+app.use('/books', router_books);
+app.use('/library', router_library);
+app.use('/patrons', router_patrons);
+app.use('/personal', router_personal);
+app.use('/postmail', router_post);
+app.use('/weeks', router_weeks);
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
