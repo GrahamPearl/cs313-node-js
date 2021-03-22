@@ -19,13 +19,24 @@ const pool = new Pool({
   }
 });
 
+const row = html => `<tr>\n${html}</tr>\n`,
+  heading = object => row(Object.keys(object).reduce((html, heading) => (html + `<th>${heading}</th>`), '')),
+  datarow = object => row(Object.values(object).reduce((html, value) => (html + `<td>${value}</td>`), ''));
+
+function htmlTable(dataList) {
+  return `<table>
+            ${heading(dataList[0])}
+            ${dataList.reduce((html, object) => (html + datarow(object)), '')}
+          </table>`
+}
+
 const getBooks = (request, response) => {
   pool.query('SELECT * FROM books', (error, results) => {
     if (error) {
       throw error
     }
     var params = {
-      headers: ["id", "author", "title"],
+      headers: ["isbn", "author", "title"],
       rows: new Array(4).fill(results.rows)
     };
 
@@ -37,21 +48,39 @@ const getBooks = (request, response) => {
 const getBooksOnGoogle = (request, response) => {
 
   var books = require('google-books-search');
+  var search = "";
 
-  books.search('Professional JavaScript for Web Developers', function (error, results) {
+  console.log("Performing Book Search");
+  console.log("Request:" + request);
+  console.log(" Params:" + request.searchParams);
+
+  let search_params = request.searchParams;
+  if (search_params.has("isbn")) {
+    search += request.isbn + "+isbn";
+  };
+  if (search_params.has("author")) {
+    search += request.author + "+inauthor";
+  };
+  if (search_params.has("title")) {
+    search += request.title + "+intitle";
+  };
+
+  console.log("Searching for: ".search);
+
+  books.search(search, function (error, results) {
     if (!error) {
       console.log(results);
 
       let params = results;
       response.render(Books.urlResponse, params);
-      
+
     } else {
       console.log(error);
       res.render("pages/error-report");
     }
   });
 
-  
+
 
 }
 
@@ -88,10 +117,20 @@ class Books extends Object {
         process.exit(-1)
       })
 
-      Books.searchEvent(req, res);
+      const search_params = req.searchParams;
+      console.log("Entering Book Search");
+      console.log("Request:" + req);
+      console.log(" Params:" + req.searchParams);
+
+      if ((search_params.has("isbn")) ||
+        (search_params.has("author")) ||
+        (search_params.has("title"))) {
+
+        Books.searchEvent(req, res);
+      }
 
     } catch (err) {
-      console.log('Error - will need to resolve:', err);            
+      console.log('Error - will need to resolve:', err);
     }
   };
 }

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const path = require('path')
 const router_post = require('./routes/postmail');
@@ -6,7 +8,8 @@ const router_books = require('./routes/books');
 const router_patrons = require('./routes/patrons');
 const router_admin = require('./routes/admin');
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT;
+
 
 var bodyParser = require("body-parser");
 

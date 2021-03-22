@@ -4,6 +4,7 @@
 
 <head>
     <%- include ("../partials/header.ejs") %>
+    <script src="books-clientside.js"></script>
 </head>
 
 <body>
@@ -13,14 +14,19 @@
     <h1>Book Search</h1>
     <p>Enter details of the book that you want to search for</p>
     <form action="/books/books_search" method="get">
-        <label for="id">ID:</label>
-        <input name="id" type="number" /> <br />
+        <label for="isbn">ID:</label>
+        <input id="search_isbn" name="isbn" type="text" value="R0Aw51Xmci4C"/> <br />
         <label for="author">Author:</label>
-        <input name="author" type="text" /> <br />
+        <input id="search_author" name="author" type="text" value="Terry Prachett"/> <br />
         <label for="title">Title:</label>
-        <input name="title" type="text" /> <br />
+        <input id="search_title" name="title" type="text" value="Mort"/> <br />
         <input type="submit" value="Submit" />
     </form>
+
+    <div class="container">
+        <ul id="list-results">            
+        </ul>
+    </div>
 
     <%- include ("../partials/card_nav.ejs") %>
 </body>
