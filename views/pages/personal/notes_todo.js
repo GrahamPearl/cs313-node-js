@@ -23,12 +23,12 @@ function addItemToToList(itemToAdd) {
 
     const buttonCheck = document.createElement('button');
     buttonCheck.classList.add("checked-btn");
-    buttonCheck.innerText = '<i class="fas fa-check"></i>';
+    buttonCheck.innerText = '<i class="fa fa-check"></i>';
 
     const buttonTrash = document.createElement('button');
     buttonTrash.classList.add("trashed-btn");
 
-    buttonTrash.innerText = '<i class="fas fa-trash"></i>';
+    buttonTrash.innerText = '<i class="fa fa-trash"></i>';
 
     todoDiv.appendChild(todoItem);
     todoDiv.appendChild(buttonCheck);

@@ -3,9 +3,13 @@ const Personal = require('../models/personal');
 var path = require('path');
 
 const router_personal = require('express').Router();
-router_personal.get('/', (req, res) => res.render('pages/personal'));
-router_personal.get('/notes_todo', (req, res) => {
-    res.sendFile(path.join(__dirname + '/../views/pages/personal/notes_todo.html'));
+      router_personal.get('/', (req, res) => res.render('pages/personal'));
+      router_personal.get('/notes_todo', (req, res) => {
+    
+    var params = {        
+      };
+    res.render("pages/personal/notes_todo", params);
+    //res.sendFile(path.join(__dirname + '/../views/pages/personal/notes_todo.ejs'));
 });
 router_personal.post('/todo', personal_ToDo);
 
