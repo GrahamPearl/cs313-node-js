@@ -79,9 +79,6 @@ const getBooksOnGoogle = (request, response) => {
       res.render("pages/error-report");
     }
   });
-
-
-
 }
 
 const addBook = (request, response) => {

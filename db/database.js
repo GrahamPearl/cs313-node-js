@@ -19,29 +19,24 @@ const pool = new Pool({
   }
 });
 
-const search = (sql, params, err, result) =>
-{
+const search = (sql, request, err, response) => {
   console.log("Performing Search");
-  pool.query(sql, params, function(err, result) {		
-		if (err) {
-			console.log("Error in query: ")
-			console.log(err);
-			callback(err, null);
-		}
-		
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
+  pool.query(sql, function (err, result) {
+    if (err) throw err;
+    else {
+      response.send(result.rows)
+    }
+  });
 };
 
 class Database extends Object {
-  static find = search;  
+  static find = search;
 
-  search(sql, params, err, result) {
-    Database.find(sql, params, err, result);
-  }
+  search(sql, req, err, result) {
+    Database.find(sql, req, err, result);
+  }  
 }
 /*
-*/
+ */
 
 module.exports = Database;

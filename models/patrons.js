@@ -1,13 +1,22 @@
 const Database = require('../db/database.js')
 
-const getPatrons = (request, response) => {
+const getAllPatrons = (request, response) => {
     const db = new Database();  
-    db.search("SELECT * FROM Books", null, null, null);
+    db.search("SELECT * FROM Patrons", null, response, response);
+}
+
+const getAPatron = (request, response) => {
+  const db = new Database();  
+  const id = request.query.id;
+  const params = [id];
+  db.search("SELECT * FROM Patrons WHERE id = "+id+"::int;", null, response, response);
+  //db.search("SELECT * FROM Patrons WHERE id = $1::int;", null, response, response);
 }
 
 class Patrons extends Object {
   static urlResponse = "pages/patrons_report";
-  static searchEvent = getPatrons;
+  //static searchEvent = getAllPatrons;
+  static searchEvent = getAPatron;
 
   execute(req, res) {
     try {
