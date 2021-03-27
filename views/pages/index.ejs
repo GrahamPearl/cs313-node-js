@@ -20,72 +20,57 @@
           class="glyphicon glyphicon-download"></span> Source on GitHub</a>
     </div>
   </div>
-  <div class="container">    
-    <hr>
+  <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <h3><span class="glyphicon 	glyphicon glyphicon-book"></span> Week 10-13: Project Progress</h3>
-        <p>Project Description - High School Library Book Club Reviews</p>
-        <p>This app demonstrates the using of:
-          <ul class="no-bullets">
-            <li>ProgresSQL database connections</li>
-            <li>Local Storage using JavaScript</li>
-            <li>API calls to Google Books API as a consumer service</li>
-          </ul>
-
-          <a href="/library">Link to Project</a>
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3><span class="glyphicon glyphicon-info-sign"></span> Week 9: US Postmail Task</h3>
-        <p>
-          This app demonstrates the using of pages with passing data by parameters
-          The site calculates the Postal Fee expected for type and weight of product selected.
-          <a href="/postmail">Link to Project</a>
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3><span class="glyphicon glyphicon glyphicon-user"></span> Week 9-12: Team Tasks</h3>
-        <p>
-          This app demonstrates the using of progresSQL database connection.
-          <a href="/week">Link to Project</a>
-        </p>
-      </div>
-
-      <div class="col-md-6">
-        <h3><span class="glyphicon glyphicon-link"></span> Week 12: Still in progress</h3>
-        <ul>
-        </ul>
-      </div>      
-    </div> <!-- row -->
-
-    <div class="alert alert-info text-center" role="alert">
-      To see each week's completed task, select the link below
       <form>
         <label for="task">Select Task:</label>
-        <select id="task" name="type">
-          <option>Project: node.js</option>
-          <option>Week 09 - Prove Task</option>
-          <option>Week 10 - Prove Task</option>
-          <option>Week 11 - Prove Task</option>
-          <option>Week 09 - Team Task</option>
-          <option>Week 10 - Team Task</option>
-          <option>Week 11 - Team Task</option>
-          <option>Week 09 - Test Task</option>
-          <option>Week 10 - Test Task</option>
-          <option>Week 10 - Test Task</option>
-          <option>Week 12 - Test Task</option>
-          <input type="submit" value="Execute" />
+        <select id="task" name="type" onchange="doTask()">
+          <option value="01">Search All Patrons</option>
+          <option value="02">Search By ID</option>
+          <option value="03">Search By Last Name</option>
+          <option value="04">Search By First Name</option>          
+          <option value="05">Insert Patron</option>
+          <option value="06">Search All Books</option>
+          <option value="07">Search By ISBN</option>
+          <option value="08">Search By Author</option>
+          <option value="09">Search By Title</option>          
+          <option value="10">Insert Book</option>
+        </select>                
       </form>
-    </div>    
-    
 
-    <div class="alert alert-info text-center" role="alert">
-      Please do not submit a copy to your educational instution, as an assessment task solution.
+    </div>
+    <hr>
+    <div class="row alert alert-info text-center" role="alert">
+      To see each API call in action, please select the associated action
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">        
+        <form id="books" action="/API" method="get" display="none">
+          <h3><span class="glyphicon 	glyphicon glyphicon-book"></span> Books</h3>
+          <label for="isbn">ID:</label>
+          <input id="search_isbn" name="isbn" type="text" value="R0Aw51Xmci4C" /> <br />
+          <label for="author">Author:</label>
+          <input id="search_author" name="author" type="text" value="Terry Prachett" /> <br />
+          <label for="title">Title:</label>
+          <input id="search_title" name="title" type="text" value="Mort" />
+          <input type="submit" value="Execute" />
+        </form>
+      </div>
+      <div class="col-md-6">        
+        <form id="patrons" action="/API" method="get" display="none">
+          <h3><span class="glyphicon 	glyphicon glyphicon-user"></span> Patrons</h3>          
+          <label for="id">ADMIN NO:</label>
+          <input name="id" type="number" /> <br />
+          <label for="name_last">Last Name:</label>
+          <input name="name_last" type="text" /> <br />
+          <label for="name_first">First Name:</label>
+          <input name="name_first" type="text" />          
+          <input class="btn btn-primary" type="submit" value="Execute" />
+        </form>
+      </div>
     </div>
   </div>
-
-
+  <script src="/javascripts/task.js">doTask()</script>
 </body>
-
 </html>

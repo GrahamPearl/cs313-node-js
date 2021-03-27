@@ -3,6 +3,7 @@
 
 <head>
   <%- include ("../partials/header.ejs") %>
+
 </head>
 
 <body>
@@ -20,32 +21,32 @@
           class="glyphicon glyphicon-download"></span> Source on GitHub</a>
     </div>
   </div>
-  
-    <div class="alert alert-info text-center" role="alert">
-      To see each week's completed task, select the link below
-      <form action="/admin/execute" method="post">
-        <label for="task">Select Task:</label>
-        <select id="task" name="type">
-          <option value="1"></option>>Project: node.js</option>
-          <option value="2"></option>>Week 09 - Prove Task</option>
-          <option value="3"></option>>Week 10 - Prove Task</option>
-          <option value="4"></option>>Week 11 - Prove Task</option>
-          <option value="5"></option>>Week 09 - Team Task</option>
-          <option value="6"></option>>Week 10 - Team Task</option>
-          <option value="7"></option>>Week 11 - Team Task</option>
-          <option value="8"></option>>Week 09 - Test Task</option>
-          <option value="9"></option>>Week 10 - Test Task</option>
-          <option value="10"></option>>Week 10 - Test Task</option>
-          <option value="11"></option>>Week 12 - Test Task</option>
-          <input type="submit" value="Execute" />
-      </form>
-    </div>    
-    <a class="btn btn-primary" target="_blank" href="/admin/db">Test Database Connection</a>
-    <div class="alert alert-info text-center" role="alert">
-      Please do not submit a copy to your educational instution, as an assessment task solution.
-    </div>
+  <div class="container">
+    <input type="text" id="username" placeholder="username" value="username"><br>
+    <input type="password" id="password" placeholder="password" value="password"><br>
+    <div class="col-md-3"></div>
+    <button class="col-md-3" onclick="login();">Log in</button>
+    <button class="col-md-3" onclick="logout();">Log out</button>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="alert alert-info text-center" role="alert">
+    Admin Activities are available once logged in
+    <form action="/admin" method="post">
+      <label for="task">Select Task:</label>
+      <select id="task" name="type">
+        <option value="101"></option>Clear Books Table</option>
+        <option value="102"></option>Clear Patrons Table</option>
+        <option value="103"></option>
+        </option>
+        <option value="104"></option>
+        </option>
+        <input type="submit" value="Execute" />
+    </form>
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="admin.js"></script>
 
 </body>
 
