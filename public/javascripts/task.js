@@ -45,13 +45,14 @@ function toggleForm(item, status = "off") {
 
 function doTask() {
     let task = document.getElementById("task").value;
+    let link = '';
     switch (task) {
         case '01': 
         case '02': 
         case '03':
         case '04':
         case '05':
-            let link = document.getElementById('patrons');
+            link = document.getElementById('patrons');
             switch (task) {
                 case '01' : link.action = "/API/find_patrons_all"; break;
                 case '02' : link.action = "/API/find_patron_by_id"; break;
@@ -67,7 +68,7 @@ function doTask() {
         case '08':
         case '09':
         case '10':
-            let link = document.getElementById('books');
+            link = document.getElementById('books');
             switch (task) {
                 case '06' : link.action = "/API/find_books_all"; break;
                 case '07' : link.action = "/API/find_book_by_isbn"; break;
