@@ -219,9 +219,31 @@ class API extends Object {
     }
     response.json(params);
   }
-}
 
 //==================================================================================================================
+//==================================================================================================================
+
+static async select_all_ratings(request, response) {
+  const paramSQL = [];
+  let dataDB = await db.search("SELECT * FROM rating;", paramSQL, null, response, response)
+  let params = {
+    data: dataDB
+  }
+  response.json(params);
+}
+
+static async select_all_ratings(request, response) {
+  const paramSQL = [];
+  let params = {
+    data: await db.search("SELECT * FROM rating;", paramSQL, null, response, response)
+  }
+
+  response.json(params);
+  fs.writeFile("data/data.json", JSON.stringify(params.data), err => {
+    if (err) throw err;
+    console.log("Done writing"); // Success
+  });
+}
 
 
 }
