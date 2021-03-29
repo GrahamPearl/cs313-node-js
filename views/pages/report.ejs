@@ -36,12 +36,13 @@
         html += '<tr>';
         var flag = 0;
 
-        $.each(data.data[0], function (index, value) {
+
+        $.each(data.dataDB[0], function (index, value) {
           html += '<th>' + index + '</th>';
         });
         html += '</tr>';
 
-        $.each(data.data, function (index, value) {
+        $.each(data.dataDB, function (index, value) {
           console.log("Building Table Row...");
 
           html += '<tr>';

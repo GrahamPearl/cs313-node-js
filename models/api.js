@@ -6,9 +6,9 @@ class API extends Object {
 
   static async select_all_patrons(request, response) {
     const paramSQL = [];
-    let dataDB = await db.search("SELECT * FROM Patrons;", paramSQL, null, response, response)
+    //let data = await db.search("SELECT * FROM Patrons;", paramSQL, null, response, response)
     let params = {
-      dataDB
+      data: await db.search("SELECT * FROM Patrons;", paramSQL, null, response, response)
     }
     // test later as may be needed: see [ https://stackoverflow.com/questions/19696240/proper-way-to-return-json-using-node-or-express ]
     // response.setHeader('Content-Type', 'application/json')
