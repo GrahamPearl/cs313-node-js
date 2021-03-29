@@ -10,6 +10,8 @@ class API extends Object {
     let params = {
       data: dataDB
     }
+    // test later as may be needed: see [ https://stackoverflow.com/questions/19696240/proper-way-to-return-json-using-node-or-express ]
+    //response.setHeader('Content-Type', 'application/json')
     response.json(params);
   }
 
