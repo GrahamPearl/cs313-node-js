@@ -8,7 +8,7 @@ class API extends Object {
     const paramSQL = [];
     let dataDB = await db.search("SELECT * FROM Patrons;", paramSQL, null, response, response)
     let params = {
-      data: dataDB
+      dataDB
     }
     // test later as may be needed: see [ https://stackoverflow.com/questions/19696240/proper-way-to-return-json-using-node-or-express ]
     response.setHeader('Content-Type', 'application/json')
