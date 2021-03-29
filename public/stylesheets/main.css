@@ -129,6 +129,9 @@ ul.no-bullets {
   min-width: 400px;
   max-width: 100%;
   font-size: 14px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .table-refresh__table {
@@ -145,7 +148,9 @@ ul.no-bullets {
 
 .table-refresh__table th,
 .table-refresh__table td {
-  text-align: left;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
   padding: 9px 18px;
   font-weight: normal;
 }

@@ -13,7 +13,20 @@ function handleTask() {
             urlResponse = "/API/find_patron_by_id";
             break;
         case "03":
-            urlResponse = "pages/index";
+            urlResponse = "/API/find_patron_by_last";
+        case "04":
+            urlResponse = "/API/find_patron_by_first";
+        case "06":
+            urlResponse = "/API/find_books_all";
+            break;
+        case "07":
+            urlResponse = "/API/find_books_all";
+            break;
+        case "08":
+            urlResponse = "/API/find_books_all";
+            break;
+        case "09":
+            urlResponse = "/API/find_books_all";
             break;
         default:
             urlResponse = "pages/index";
@@ -54,6 +67,14 @@ function doTask() {
         case '08':
         case '09':
         case '10':
+            let link = document.getElementById('books');
+            switch (task) {
+                case '06' : link.action = "/API/find_books_all"; break;
+                case '07' : link.action = "/API/find_book_by_isbn"; break;
+                case '08' : link.action = "/API/find_book_by_author"; break;
+                case '09' : link.action = "/API/find_book_by_title"; break;
+                case 'q0' : link.action = "/API/insert_patron"; break;
+            }
             toggleForm(document.getElementById("books"), "on");
             toggleForm(document.getElementById("patrons"));
             break;
