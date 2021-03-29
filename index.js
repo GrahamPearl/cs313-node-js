@@ -1,3 +1,5 @@
+//import cors from 'cors';
+
 const env = require('dotenv').config()
 const express = require('express')
 const path = require('path')
@@ -15,6 +17,11 @@ var app = express()
   .use(express.urlencoded({
     extended: true
   }))
+  .use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  })
   .use(session({
     secret: 'KZN-libaries',
     resave: false,
