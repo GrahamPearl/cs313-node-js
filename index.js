@@ -1,7 +1,6 @@
 const env = require('dotenv').config()
 const express = require('express')
 const path = require('path')
-const router_api = require('./routes/api');
 
 var session = require('express-session')
 var $ = require("jquery");
@@ -25,7 +24,8 @@ var app = express()
   .set('views', path.join(__dirname, 'views'))
   .set('models', path.join(__dirname, 'models'))
   .set('view engine', 'ejs')
-  .use('/API', router_api)
+  .use('/API', require('./routes/api'))
+  .use('/library', require('./routes/library'))
 
   .get('/', (req, res) => {
     if (process.env.MODE === 'ADMIN') {

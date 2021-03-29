@@ -1,6 +1,8 @@
+'use strict';
+
 require('dotenv').config();
 var $ = require("jquery");
-
+const fs = require('fs');
 const {
   response
 } = require('express');
@@ -35,7 +37,7 @@ async function insert(sql, params, request, err, response) {
     await pool.query(sql, params)
     await pool.query("COMMIT")
   } catch (ex) {
-    console.error('Error occurred - '+ex.stack)
+    console.error('Error occurred - ' + ex.stack)
     await pool.query("ROLLBACK")
   } finally {}
 }
@@ -48,7 +50,7 @@ async function update(sql, params, request, err, response) {
     await pool.query(sql, params)
     await pool.query("COMMIT")
   } catch (ex) {
-    console.error('Error occurred - '+ex.stack)
+    console.error('Error occurred - ' + ex.stack)
     await pool.query("ROLLBACK")
   } finally {}
 }
@@ -56,12 +58,12 @@ async function update(sql, params, request, err, response) {
 async function search(sql, params, request, err, response) {
   try {
     console.log("Performing Search - ASYNC");
-    console.log("SQL="+sql);
+    console.log("SQL=" + sql);
     await pool.connect()
-    let result = await pool.query(sql, params)    
+    let result = await pool.query(sql, params)
     return result.rows
   } catch (ex) {
-    console.error('Error occurred - '+ex.stack)
+    console.error('Error occurred - ' + ex.stack)
     return []
   }
 }
@@ -74,7 +76,7 @@ async function remove(sql, params, request, err, response) {
     await pool.query(sql, params)
     await pool.query("COMMIT")
   } catch (ex) {
-    console.error('Error occurred - '+ex.stack)
+    console.error('Error occurred - ' + ex.stack)
     await pool.query("ROLLBACK")
   } finally {}
 }
@@ -86,8 +88,7 @@ const searchWithPromise = (sql, params, request, err, response) => {
     .then(() => console.log("Connected to database"))
     .then(() => pool.query(sql, params)
       .then(result => console.table(result.rows))
-      .catch(e => console.error('Error occurred - '+ex)
-      ));
+      .catch(e => console.error('Error occurred - ' + ex)));
 };
 
 const searchWithResponse = (sql, params, request, err, response) => {
@@ -100,26 +101,39 @@ const searchWithResponse = (sql, params, request, err, response) => {
   });
 };
 
+const writeJSON = (filename, data) => {
+  fs.writeFile(filename, JSON.stringify(data, null, 2),
+    (err) => {
+      if (err) throw err;
+      console.log('Data written to file');
+    });
+}
+
 class Database extends Object {
   static find = search;
   static add1 = insert;
   static del1 = remove;
   static edit = update;
+  static save = writeJSON;
 
   search(sql, params, req, err, response) {
-    return Database.find(sql, params, req, err, response)    
+    return Database.find(sql, params, req, err, response)
   }
 
   insert(sql, params, req, err, response) {
-    return Database.add1(sql, params, req, err, response)    
+    return Database.add1(sql, params, req, err, response)
   }
 
   update(sql, params, req, err, response) {
-    return Database.edit(sql, params, req, err, response)    
+    return Database.edit(sql, params, req, err, response)
   }
 
   delete(sql, params, req, err, response) {
-    return Database.del1(sql, params, req, err, response)    
+    return Database.del1(sql, params, req, err, response)
+  }
+
+  save(filename, data) {
+    return Database.save(filename, data)
   }
 
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <%- include ("../partials/header.ejs") %>
+    <script src="books-clientside.js"></script>
+</head>
+
+<body>
+
+    <%- include ("../partials/nav.ejs") %>
+
+    <h1>Book Search</h1>
+    <span class="glyphicon glyphicon-book"></span>        
+    <p>Enter details of the book that you want to search for</p>
+    <form action="/library/find/books" method="get">
+        <label for="isbn">ID:</label>
+        <input id="search_isbn" name="isbn" type="text" value="R0Aw51Xmci4C"/> <br />
+        <label for="author">Author:</label>
+        <input id="search_author" name="author" type="text" value="Terry Prachett"/> <br />
+        <label for="title">Title:</label>
+        <input id="search_title" name="title" type="text" value="Mort"/> <br />
+        <input type="submit" value="Submit" />
+    </form>
+
+    <div class="container">
+        <ul id="list-results">            
+        </ul>
+    </div>
+
+    <%- include ("../partials/card_nav.ejs") %>
+</body>
+
+</html>

@@ -81,18 +81,18 @@ ul.no-bullets {
 }
 
 .jumbotron {
-  background: #532F8C;
+  background: #1A1A1D;
   color: white;
   padding-bottom: 80px;
 }
 
 .jumbotron .btn-primary {
-  background: #845ac7;
-  border-color: #845ac7;
+  background: #6F2232;
+  border-color: #FFFFFF;
 }
 
 .jumbotron .btn-primary:hover {
-  background: #7646c1;
+  background: #5ac77e52;
 }
 
 .jumbotron p {
@@ -135,11 +135,11 @@ ul.no-bullets {
   border-collapse: collapse;
   width: 100%;
   box-shadow: 0 0 5px rgba(0,0, 0, 0.2);
-  border-bottom: 2px solid #532F8C;
+  border-bottom: 2px solid #2f8c3f;
 }
 
 .table-refresh__table thead tr {
-  background:#532F8C;
+  background:#2f8c3f;
   color:#fff;
 }
 

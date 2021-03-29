@@ -1,4 +1,4 @@
-const { response } = require("express");
+//const { response } = require("express");
 
 function handleTask() {
     let urlResponse = "";
@@ -24,7 +24,7 @@ function handleTask() {
 function toggleForm(item, status = "off") {
     console.log("Adjusting item: "+item);
     if (status == "on") {
-        item.style.display = "grid"
+        item.style.display = "grid"        
     } else {
         item.style.display = "none";
     }
