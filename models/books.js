@@ -1,50 +1,3 @@
-const {
-  Pool
-} = require("pg");
-
-const uriLocal = 'postgres://api_user:password@localhost:5432/books_api';
-
-var URI = '';
-if (process.env._.indexOf("heroku") === -1) {
-  URI = uriLocal;
-} else {
-  URI = process.env.DATABASE_URL
-}
-
-const connectionString = process.env.DATABASE_URL || URI;
-const pool = new Pool({
-  connectionString: connectionString,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
-const row = html => `<tr>\n${html}</tr>\n`,
-  heading = object => row(Object.keys(object).reduce((html, heading) => (html + `<th>${heading}</th>`), '')),
-  datarow = object => row(Object.values(object).reduce((html, value) => (html + `<td>${value}</td>`), ''));
-
-function htmlTable(dataList) {
-  return `<table>
-            ${heading(dataList[0])}
-            ${dataList.reduce((html, object) => (html + datarow(object)), '')}
-          </table>`
-}
-
-const getBooks = (request, response) => {
-  pool.query('SELECT * FROM books', (error, results) => {
-    if (error) {
-      throw error
-    }
-    var params = {
-      headers: ["isbn", "author", "title"],
-      rows: new Array(4).fill(results.rows)
-    };
-
-    response.render(Books.urlResponse, params);
-    //response.status(200).json(results.rows)
-  })
-}
-
 const getBooksOnGoogle = (request, response) => {
 
   var books = require('google-books-search');
@@ -67,11 +20,11 @@ const getBooksOnGoogle = (request, response) => {
 
   console.log("Searching for: ".search);
 
-  books.search(search, function (error, results) {
+  books.search(search, function (error, ress) {
     if (!error) {
-      console.log(results);
+      console.log(ress);
 
-      let params = results;
+      let params = ress;
       response.render(Books.urlResponse, params);
 
     } else {
@@ -81,28 +34,7 @@ const getBooksOnGoogle = (request, response) => {
   });
 }
 
-const addBook = (request, response) => {
-  const {
-    author,
-    title
-  } = request.body
-
-  pool.query(
-    'INSERT INTO books (author, title) VALUES ($1, $2)',
-    [author, title],
-    (error) => {
-      if (error) {
-        throw error
-      }
-      response.status(201).json({
-        status: 'success',
-        message: 'Book added.'
-      })
-    },
-  )
-}
-
-class Books extends Object {
+class GoogleBooks extends Object {
   static urlResponse = "pages/books_report";
   static insertBook = addBook;
   static searchEvent = getBooksOnGoogle;
@@ -124,6 +56,7 @@ class Books extends Object {
         (search_params.has("title"))) {
 
         Books.searchEvent(req, res);
+        
       }
 
     } catch (err) {
@@ -132,4 +65,4 @@ class Books extends Object {
   };
 }
 
-module.exports = Books
+module.exports = GoogleBooks

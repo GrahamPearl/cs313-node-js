@@ -33,7 +33,7 @@ var app = express()
   .set('view engine', 'ejs')
   .use('/API', require('./routes/api'))
   .use('/library', require('./routes/library'))
-
+  .use('/google', require('./routes/google'))
   .get('/', (req, res) => {
     if (process.env.MODE === 'ADMIN') {
       res.render('pages/admin')
@@ -51,42 +51,42 @@ app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 //==========================================================================================
 function handleLogin(request, response) {
-  var result = {
+  var res = {
     success: false
   };
   if (request.body.username == "admin" && request.body.password == "password") {
     request.session.user = request.body.username;
-    result = {
+    res = {
       success: true
     };
   }
 
-  response.json(result);
+  response.json(res);
 }
 
 function handleLogout(request, response) {
-  var result = {
+  var res = {
     success: false
   };
   if (request.session.user) {
     request.session.destroy();
-    result = {
+    res = {
       success: true
     };
   }
 
-  response.json(result);
+  response.json(res);
 }
 
 function verifyLogin(request, response, next) {
   if (request.session.user) {
     next();
   } else {
-    var result = {
+    var res = {
       success: false,
       message: "Access Denied"
     };
-    response.status(401).json(result);
+    response.status(401).json(res);
   }
 }
 

@@ -17,17 +17,17 @@ const pool = new Pool({
 });
 
 const getBranches = (request, response) => {
-   pool.query('SELECT * FROM branch', (error, results) => {
+   pool.query('SELECT * FROM branch', (error, ress) => {
     if (error) {
       throw error
     }
     var params = {
       headers: ["id", "title", "email"],
-      rows: new Array(4).fill(results.rows)
+      rows: new Array(4).fill(ress.rows)
     };
 
     response.render(Library.urlResponse, params);
-    //response.status(200).json(results.rows)
+    //response.status(200).json(ress.rows)
   })
 }
 

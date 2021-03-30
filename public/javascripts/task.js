@@ -89,3 +89,6 @@ function doTask() {
 function showAction() {
     console.log("User invoked action - script working");
 }
+
+toggleForm(document.getElementById("books"));
+toggleForm(document.getElementById("patrons"));

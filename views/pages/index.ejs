@@ -22,7 +22,41 @@
           class="glyphicon glyphicon-education"></span> Library Front-End</a>
     </div>
   </div>
+
   <div class="container">
+    <a type="button" class="btn btn-lg btn-primary" href="/google/"><span class="glyphicon glyphicon-search"></span>
+      Google Books Search</a>
+
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+      <form id="books" action="/API" method="get" display="none">
+        <h3><span class="glyphicon 	glyphicon glyphicon-book"></span> Books</h3>
+        <label for="isbn">ISBN:</label>
+        <input id="search_isbn" name="isbn" type="text" value="R0Aw51Xmci4C" /> <br />
+        <label for="author">Author:</label>
+        <input id="search_author" name="author" type="text" value="Terry Prachett" /> <br />
+        <label for="title">Title:</label>
+        <input id="search_title" name="title" type="text" value="Mort" />
+        <input class="btn btn-primary" type="submit" value="Execute" />
+      </form>
+    </div>
+    <div class="row">
+      <form id="patrons" action="/API" method="get" display="none">
+        <h3><span class="glyphicon 	glyphicon glyphicon-user"></span> Patrons</h3>
+        <label for="id">ADMIN NO:</label>
+        <input name="id" type="number" /> <br />
+        <label for="name_last">Last Name:</label>
+        <input name="name_last" type="text" /> <br />
+        <label for="name_first">First Name:</label>
+        <input name="name_first" type="text" />
+        <input class="btn btn-primary" type="submit" value="Execute" />
+      </form>
+    </div>
+    <hr>
+
     <div class="row">
       <form>
         <label for="task">API Select Task:</label>
@@ -39,51 +73,17 @@
           <option value="10">Insert Book</option>
         </select>
       </form>
-
     </div>
-    <hr>
     <div class="row alert alert-info text-center" role="alert">
       To see each API call in action, please select the associated action
     </div>
     <hr>
-    <div class="row">
-      <div class="col-md-6">
-        <form id="books" action="/API" method="get" display="none">
-          <h3><span class="glyphicon 	glyphicon glyphicon-book"></span> Books</h3>
-          <label for="isbn">ID:</label>
-          <input id="search_isbn" name="isbn" type="text" value="R0Aw51Xmci4C" /> <br />
-          <label for="author">Author:</label>
-          <input id="search_author" name="author" type="text" value="Terry Prachett" /> <br />
-          <label for="title">Title:</label>
-          <input id="search_title" name="title" type="text" value="Mort" />
-          <input class="btn btn-primary" type="submit" value="Execute" />
-        </form>
-      </div>
-      <div class="col-md-6">
-        <form id="patrons" action="/API" method="get" display="none">
-          <h3><span class="glyphicon 	glyphicon glyphicon-user"></span> Patrons</h3>
-          <label for="id">ADMIN NO:</label>
-          <input name="id" type="number" /> <br />
-          <label for="name_last">Last Name:</label>
-          <input name="name_last" type="text" /> <br />
-          <label for="name_first">First Name:</label>
-          <input name="name_first" type="text" />
-          <input class="btn btn-primary" type="submit" value="Execute" />
-        </form>
-      </div>
-    </div>
+
+  </div>
   </div>
   <script src="/javascripts/task.js">
     doTask()
-  </script>
-  <script>
-    if (typeof "{{ params }}" !== 'undefined') {
-      var params = "{{ params }}";
-      console.log("parameters found:"+params);
-    } else {
-      console.log("params not defined");
-    }
-  </script>
+  </script>  
 </body>
 
 </html>

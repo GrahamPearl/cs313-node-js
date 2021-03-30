@@ -56,9 +56,9 @@ async function search(sql, request, err, response) {
   try {
     console.log("Performing Search - ASYNC");
     await pool.connect()
-    let result = await pool.query(sql)
-    //console.table(result.rows)
-    return result.rows
+    let res = await pool.query(sql)
+    //console.table(res.rows)
+    return res.rows
   } catch (ex) {
     console.log('Error - ${ex} occurred')
     return []
@@ -71,16 +71,16 @@ const searchWithPromise = (sql, request, err, response) => {
   pool.connect()
     .then(() => console.log("Connected to database"))
     .then(() => pool.query(sql)
-      .then(result => console.table(result.rows))
+      .then(res => console.table(res.rows))
       .catch(e => console.log(e)));
 };
 
 const searchWithResponse = (sql, request, err, response) => {
   console.log("Performing Search");
-  pool.query(sql, function (err, result) {
+  pool.query(sql, function (err, res) {
     if (err) throw err;
     else {
-      response.send(result.rows)
+      response.send(res.rows)
     }
   });
 };

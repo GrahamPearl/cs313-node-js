@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+    <%- include ("../partials/nav.ejs") %>
+
+    <h1>Google API Search</h1>
+    <p>Enter details of the book that you want to search using Google Books</p>
+    <form id="books" action="/Google/API" method="get" display="none">
+        <h3><span class="glyphicon glyphicon-search"></span> Google Books</h3>
+        <label for="author">Author:</label>
+        <input id="search_author" name="author" type="text" value="Terry Prachett" /> <br />
+        <label for="title">Title:</label>
+        <input id="search_title" name="title" type="text" value="Mort" />
+        <input class="btn btn-primary" type="submit" value="Execute" />
+    </form>
+
+    <%- include ("../partials/card_nav.ejs") %>
+</body>
+
+</html>

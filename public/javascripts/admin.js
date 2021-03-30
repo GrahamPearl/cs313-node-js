@@ -8,8 +8,8 @@ function login() {
 		password: password
 	};
 
-	$.post("/login", params, function(result) {
-		if (result && result.success) {
+	$.post("/login", params, function(res) {
+		if (res && res.success) {
 			$("#status").text("Successfully logged in.");
 		} else {
 			$("#status").text("Error logging in.");
@@ -19,8 +19,8 @@ function login() {
 
 function logout() {
   alert('Logging Out...');
-	$.post("/logout", function(result) {
-		if (result && result.success) {
+	$.post("/logout", function(res) {
+		if (res && res.success) {
 			$("#status").text("Successfully logged out.");
 		} else {
 			$("#status").text("Error logging out.");
