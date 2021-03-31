@@ -80,7 +80,7 @@ function doTask() {
             link = document.getElementById('patrons');
             switch (task) {
                 case '01':
-                    link.action = "/API/find_patrons_all";
+                    link.action = "/API/find_patrons_all";                    
                     break;
                 case '02':
                     link.action = "/API/find_patron_by_id";
@@ -95,7 +95,7 @@ function doTask() {
                     show_selected("search_patron_name_first");
                     break;
                 case '05':
-                    link.action = "/API/insert_patron";
+                    link.action = "/API/insert_patron";                    
                     set_all_unselected("on")
                     break;
             }
@@ -110,7 +110,7 @@ function doTask() {
             link = document.getElementById('books');
             switch (task) {
                 case '06':
-                    link.action = "/API/find_books_all";                    
+                    link.action = "/API/find_books_all";                                        
                     break;
                 case '07':
                     link.action = "/API/find_book_by_isbn";

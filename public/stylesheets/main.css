@@ -13,12 +13,12 @@ body {
 form,
 .form {
   display: grid;
+  max-width: 600px;
   padding: 1em;
   background: #f9f9f9;
   color: #000000;
   border: 1px solid #c1c1c1;
-  margin: 2rem auto 0 auto;
-  max-width: 600px;
+  margin: 2rem auto 0 auto;  
   padding: 1em;
 }
 
