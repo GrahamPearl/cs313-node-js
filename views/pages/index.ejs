@@ -14,7 +14,7 @@
       <a href="/" class="lang-logo">
         <img src="/lang-logo.png">
       </a>
-      <h1>Demonstration of Node.js Projects</h1>
+      <h1>Demonstration of Nsearch_book_authorode.js Projects</h1>
       <p>This is a collection of Node.js projects on Heroku, created by Graham Pearl.</p>
       <a type="button" class="btn btn-lg btn-primary" href="https://github.com/GrahamPearl/cs313-node-js"><span
           class="glyphicon glyphicon-download"></span> Source on GitHub</a>
@@ -34,24 +34,24 @@
     <div class="row">
       <form id="books" action="/API" method="get" display="none">
         <h3><span class="glyphicon 	glyphicon glyphicon-book"></span> Books</h3>
-        <label for="isbn">ISBN:</label>
-        <input id="search_isbn" name="isbn" type="text" value="R0Aw51Xmci4C" /> <br />
-        <label for="author">Author:</label>
-        <input id="search_author" name="author" type="text" value="Terry Prachett" /> <br />
-        <label for="title">Title:</label>
-        <input id="search_title" name="title" type="text" value="Mort" />
+        <label class="search_book_isbn" for="isbn">ISBN:</label>
+        <input class="search_book_isbn" name="isbn" type="text" value="R0Aw51Xmci4C" /> <br />
+        <label class="search_book_author" for="author">Author:</label>
+        <input class="search_book_author" name="author" type="text" value="Terry Prachett" /> <br />
+        <label class="search_book_title" for="title">Title:</label>
+        <input class="search_book_title" name="title" type="text" value="Mort" />
         <input class="btn btn-primary" type="submit" value="Execute" />
       </form>
     </div>
     <div class="row">
       <form id="patrons" action="/API" method="get" display="none">
         <h3><span class="glyphicon 	glyphicon glyphicon-user"></span> Patrons</h3>
-        <label for="id">ADMIN NO:</label>
-        <input name="id" type="number" /> <br />
-        <label for="name_last">Last Name:</label>
-        <input name="name_last" type="text" /> <br />
-        <label for="name_first">First Name:</label>
-        <input name="name_first" type="text" />
+        <label class="search_patron_id" for="id">ID / ADMIN NO:</label>
+        <input class="search_patron_id" name="id" type="number" /> <br />
+        <label class="search_patron_name_last" for="name_last">Last Name:</label>
+        <input class="search_patron_name_last" name="name_last" type="text" /> <br />
+        <label class="search_patron_name_first" for="name_first">First Name:</label>
+        <input class="search_patron_name_first" name="name_first" type="text" />
         <input class="btn btn-primary" type="submit" value="Execute" />
       </form>
     </div>
@@ -83,7 +83,7 @@
   </div>
   <script src="/javascripts/task.js">
     doTask()
-  </script>  
+  </script>
 </body>
 
 </html>
