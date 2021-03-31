@@ -46,17 +46,17 @@ function build_table_google(info) {
     },
     "pagingType": "simple",
     columns: [{
-      field: 'id',
-      title: 'Item ID'
-    }, {
-      field: 'volumeInfo.authors',
+      field: 'authors',
       title: 'Authors'
     }, {
-      field: 'volumeInfo.title',
+      field: 'title',
       title: 'Title'
     }, {
-      field: 'action',
-      title: 'Action'
+      field: 'ISBN_10',
+      title: 'ISBN-10'
+    }, {
+      field: 'ISBN_13',
+      title: 'ISBN-13'
     }],
     data: info
 
@@ -124,38 +124,43 @@ function find_google_api() {
   $.get(searchFor,
     function (data) {
       let found = data.items;
+      let render = {};
+          render.items = [];
 
       for (let [key, value] of Object.entries(found)) {
+        let item = {};
 
         if (typeof value.volumeInfo.title !== 'undefined') {
           let title = value.volumeInfo.title;
-          console.log("Title:" + JSON.stringify(title));
-        }
-        if (typeof value.volumeInfo.authors !== 'undefined') {
-          let authors = value.volumeInfo.authors;
-          for (let [key, author] of Object.entries(authors)) {
-            console.log("Author:" + JSON.stringify(author));
-          }
-        }
-        if (typeof value.volumeInfo.authors !== 'undefined') {
-          let authors = value.volumeInfo.authors;
-          for (let [key, author] of Object.entries(authors)) {
-            console.log("Author:" + JSON.stringify(author));
-          }
-        }
-        if (typeof value.volumeInfo.industryIdentifiers !== 'undefined') {
-          let identifiers = value.volumeInfo.industryIdentifiers;
-          for (let [key, identify] of Object.entries(identifiers)) {
-            console.log("ISBN:" + JSON.stringify(identify));
-          }
+          item.title = title;
         }
         
-      }
+        if (typeof value.volumeInfo.authors !== 'undefined') {
+          let authors = value.volumeInfo.authors;
+          item.authors = [];
+          for (let [key, author] of Object.entries(authors)) {
+            item.authors.push(author);
+          }
+        }
 
+        if (typeof value.volumeInfo.industryIdentifiers !== 'undefined') {
+          let identifiers = value.volumeInfo.industryIdentifiers;                  
+          for (let [key, identify] of Object.entries(identifiers)) {
+            if (identifiers[key].type !== 'undefined') {
+              if (identifiers[key].type == 'ISBN_13') item.ISBN_13 = identify.identifier;
+              if (identifiers[key].type == 'ISBN_10') item.ISBN_10 = identify.identifier;
+            }
+          }
+        }        
+        
+        render.items.push(item);
+      }
+      console.log(JSON.stringify(render));
+      
 
       //console.dir(found);      
       //found.action = "New Action";
-      build_table_google(found);
+      build_table_google(render.items);
 
     });
 }
