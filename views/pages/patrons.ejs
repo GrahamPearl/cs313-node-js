@@ -2,28 +2,27 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-    <%- include ("../partials/header.ejs") %>
+<head><%- include ("../partials/header.ejs") %>
 </head>
 
-<body>
-
-    <%- include ("../partials/nav.ejs") %>
+<body><%- include ("../partials/nav.ejs") %>
 
     <h1>Patrons Search</h1>
-    <span class="glyphicon glyphicon-user"></span>    
+    <span class="glyphicon glyphicon-user"></span>
     <p>Enter details of the patron that you want to search for</p>
-    <form action="/library/find/patrons" method="get">
+    <div class="form">
         <label for="id">ADMIN NO:</label>
         <input name="id" type="number" /> <br />
         <label for="name_last">Last Name:</label>
         <input name="name_last" type="text" /> <br />
         <label for="name_first">First Name:</label>
         <input name="name_first" type="text" /> <br />
-        <input type="submit" value="Submit" />
-    </form>
+        <input type="submit" value="Submit" onclick="find_patrons_all()"/>
+    </div>
+    
+    <%- include ("../partials/report.ejs") %>
 
-    <%- include ("../partials/card_nav.ejs") %>
+    <%- include ("../partials/card_nav.ejs") %>    
 </body>
 
 </html>

@@ -1,25 +1,20 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-function buildTable(data) {
-    var html = '';
-    html += '<tr>';
-    html += '</tr>';
-    return html;
-}
 
 const router_find =
     require('express').Router()
     .use('/books', async (req, res) => {
         // PERFORM API CALL TO BOOKS = OBTAIN JSON FILE
         let found = []
-        res.render('pages/report', {
-            data: found
+        res.render('pages/books', {
+            title: 'Books Found'
+            ,data: found
         });        
     })
     .use('/patrons', async (req, res) => {
         // PERFORM API CALL TO PATRONS = OBTAIN JSON FILE
         let found = []
-        res.render('pages/report', {
+        res.render('pages/patrons', {
             title: 'Patrons Found'
             ,data: found
         });

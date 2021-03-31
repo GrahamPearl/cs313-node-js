@@ -10,7 +10,8 @@ body {
   color: #000000;
 }
 
-form {
+form,
+.form {
   display: grid;
   padding: 1em;
   background: #f9f9f9;
@@ -22,20 +23,25 @@ form {
 }
 
 form input,
-form select {
+form select,
+.form input,
+.form select {
   background: #fff;
   border: 1px solid #9c9c9c;
 }
 
 form button,
-form select {
+form select,
+.form button,
+.form select {
   background: lightgrey;
   padding: 0.7em;
   width: 100%;
   border: 0;
 }
 
-form button:hover {
+form button:hover,
+.form button:hover {
   background: gold;
 }
 
@@ -54,11 +60,13 @@ input:focus {
 
 @media (min-width: 400px) {
 
-  form {
+  form,
+  .form {
     grid-template-columns: 200px 1fr;    
   }
 
-  form .columm1 {
+  form .columm1,
+  .form .columm1 {
     grid-template-columns: 1fr;
     grid-gap: 1px;
   }
