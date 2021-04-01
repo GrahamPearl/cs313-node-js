@@ -6,18 +6,36 @@
 </head>
 
 <body><%- include ("../partials/nav.ejs") %>
+    <script src="/javascripts/google.js"></script>
 
     <h1>Google API Search</h1>
     <p>Enter details of the book that you want to search using Google Books</p>
     <div class="form">
         <h3><span class="glyphicon glyphicon-search"></span> Google Books</h3>
-        <label for="author">Author:</label>
-        <input id="search_author" name="author" type="text" value="Terry Pratchett" /> <br />
-        <label for="title">Title:</label>
-        <input id="search_title" name="title" type="text" value="Mort" />
-        <input type="submit" value="Execute" onclick="find_google_api()"/>
-    </div>
+        <label class="search_author" for="author">Author:</label>
+        <input class="search_author" id="search_author" name="author" type="text" value="Terry Pratchett" /> <br />
+        <label class="search_title" for="title">Title:</label>
+        <input class="search_title" id="search_title" name="title" type="text" value="Mort" />
 
+        <label class="search_types" for="">Type of Books:</label>
+        <div>
+            <label for="search_free"> Free Books</label>
+            <input class="search_free" id="search_free" name="search_free" type="checkbox" value="free-books">
+            <label for="search_paid"> Paid Books</label>
+            <input class="search_paid" id="search_paid" name="search_paid" type="checkbox" value="paid-books">
+        </div>
+        
+        <label for="task">Apply Search Filter:</label>
+        <select id="task" name="type" onchange="UX.apply_filter()">
+            <option value="0">Search Exact Match By Author only</option>
+            <option value="1">Search Exact Match By Title only</option>
+            <option value="2">Search Exact Match By Author & Title</option>
+            <option value="3">Search Relax Match By Author</option>
+            <option value="4">Search Relax Match By Title</option>
+            <option value="5">Search Relax Match By Author & Title</option>
+        <input type="submit" value="Execute" onclick="find_google_api()" />
+    </div>
+    
     <%- include ("../partials/report.ejs") %>
     <%- include ("../partials/card_nav.ejs") %>
 </body>
