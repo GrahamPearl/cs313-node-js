@@ -18,24 +18,39 @@
         <input class="search_title" id="search_title" name="title" type="text" value="Mort" />
 
         <label class="search_types" for="">Type of Books:</label>
-        <div>
-            <label for="search_free"> Free Books</label>
-            <input class="search_free" id="search_free" name="search_free" type="checkbox" value="free-books">
-            <label for="search_paid"> Paid Books</label>
-            <input class="search_paid" id="search_paid" name="search_paid" type="checkbox" value="paid-books">
+        <div class="search_types">
+            <div class="row">
+                <label for="search_free">Free Books</label>
+                <input class="search_free" id="search_free" name="search_free" type="checkbox" value="free-books">
+                <label for="search_paid">Paid Books</label>
+                <input class="search_paid" id="search_paid" name="search_paid" type="checkbox" value="paid-books">
+            </div>
+            <div class="row">
+                <label for="search_part">Partial E-Books</label>
+                <input class="search_part" id="search_part" name="search_part" type="checkbox" value="part-books">
+                <label for="search_full">Full E-Books</label>
+                <input class="search_full" id="search_full" name="search_full" type="checkbox" value="full-books">
+                <label for="search_ebook">E-Books</label>
+                <input class="search_ebook" id="search_ebook" name="search_ebook" type="checkbox" value="e-books">
+            </div>
         </div>
-        
-        <label for="task">Apply Search Filter:</label>
-        <select id="task" name="type" onchange="UX.apply_filter()">
+        <label for="task_order">Order By:</label>
+        <select id="task_order" name="task_order">
+            <option value="0">Relevance</option>
+            <option value="1">Newest</option>
+        </select>
+        <label for="task_filter">Apply Search Filter:</label>
+        <select id="task_filter" name="task_filter" onchange="UX.apply_filter()">
             <option value="0">Search Exact Match By Author only</option>
             <option value="1">Search Exact Match By Title only</option>
             <option value="2">Search Exact Match By Author & Title</option>
             <option value="3">Search Relax Match By Author</option>
             <option value="4">Search Relax Match By Title</option>
             <option value="5">Search Relax Match By Author & Title</option>
+        </select>
         <input type="submit" value="Execute" onclick="find_google_api()" />
     </div>
-    
+
     <%- include ("../partials/report.ejs") %>
     <%- include ("../partials/card_nav.ejs") %>
 </body>

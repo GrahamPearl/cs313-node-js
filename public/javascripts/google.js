@@ -16,9 +16,8 @@ function build_table_google(info) {
         }, {
             field: 'ISBN_13',
             title: 'ISBN-13'
-        }],
-        data: info
-
+        }]
+        //,data: info
     })
 }
 
@@ -53,8 +52,7 @@ function check_defined_not_null_and_not_empty(item_to_check, criteria, callback)
 }
 
 class Filter {
-
-    static apply_filter(filter_type) {        
+    static apply(filter_type) {
         switch (filter_type) {
             case "0":
                 return check_defined_not_null_and_not_empty("search_author", "inauthor:", apply_criteria_append_filter_to_item);
@@ -75,9 +73,20 @@ class Filter {
     }
 }
 
+class OrderBy {
+    static apply(order_by) {
+        switch (order_by) {
+            case "0":
+                return "&orderBy=relevance";
+            case "1":
+                return "&orderBy=newest";
+        }
+        return "";
+    }
+}
+
 class UX {
-    static apply_filter()
-    {
+    static apply_filter() {
 
     }
 }
@@ -85,10 +94,14 @@ class UX {
 function find_google_api() {
     let searchFor = "https://www.googleapis.com/books/v1/volumes?q="
 
-    let filter_type = document.getElementById("task").value;    
-    console.log("Filter Type: "+filter_type);
+    let filter_type = document.getElementById("task_filter").value;
+    let sort_by = document.getElementById("task_order").value;
 
-    searchFor += Filter.apply_filter(filter_type);    
+    console.log("Filter Type: " + filter_type);
+
+    searchFor += Filter.apply(filter_type) +
+        OrderBy.apply(sort_by);
+
     searchFor += "&maxResults=40";
     console.log("Performing GOOGLE API Search:" + searchFor)
 
@@ -125,13 +138,14 @@ function find_google_api() {
                 }
 
                 render.items.push(item);
+
             }
             console.log(JSON.stringify(render));
 
 
             //console.dir(found);      
             //found.action = "New Action";
-            build_table_google(render.items);
-
+            build_table_google(); //render.items
+            $('#data-table').bootstrapTable('load', render.items)
         });
 }
