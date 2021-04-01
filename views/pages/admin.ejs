@@ -24,22 +24,29 @@
   <div class="container">
     <input type="text" id="username" placeholder="username" value="username"><br>
     <input type="password" id="password" placeholder="password" value="password"><br>
+    <div class="row">
     <div class="col-md-3"></div>
-    <button class="col-md-3" onclick="login();">Log in</button>
-    <button class="col-md-3" onclick="logout();">Log out</button>
+    <button id="btn-login" class="col-md-3" onclick="login();">Log in</button>
+    <button id="btn-logout" class="col-md-3" onclick="logout();">Log out</button>
     <div class="col-md-3"></div>
+  </div>
+    <div class="row">
+      <a href="<GENERATED_GOOGLE_URL>">Login with Google</a>
+    </div>
+    
   </div>
   <div class="alert alert-info text-center" role="alert">
     Admin Activities are available once logged in
     <form action="/admin" method="post">
       <label for="task">Select Task:</label>
       <select id="task" name="type">
-        <option value="101"></option>Clear Books Table</option>
-        <option value="102"></option>Clear Patrons Table</option>
-        <option value="103"></option>
-        </option>
-        <option value="104"></option>
-        </option>
+        <option value="101">Clear Books Table</option>
+        <option value="102">Clear Patrons Table</option>
+        <option value="103">Clear Reviews Table</option>
+        <option value="104">Delete Book</option>        
+        <option value="105">Delete Patron</option>
+        <option value="106">Delete Book</option>
+        
         <input type="submit" value="Execute" />
     </form>
   </div>

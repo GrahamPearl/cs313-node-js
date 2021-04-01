@@ -31,9 +31,10 @@ var app = express()
   .set('views', path.join(__dirname, 'views'))
   .set('models', path.join(__dirname, 'models'))
   .set('view engine', 'ejs')
-  .use('/API', require('./routes/api'))
+  .use('/API', require('./routes/api'))  
+  .use('/google', require('./routes/google'))  
+  .use('/help', require('./routes/help'))
   .use('/library', require('./routes/library'))
-  .use('/google', require('./routes/google'))
   .get('/', (req, res) => {
     if (process.env.MODE === 'ADMIN') {
       res.render('pages/admin')

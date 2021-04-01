@@ -119,6 +119,7 @@ function find_google_api() {
   if ((addTitle !== null && String(addTitle) !== ''))
     searchFor += String(addTitle);
 
+  searchFor += "&maxResults=40";
   console.log("Performing GOOGLE API Search:" + searchFor)
 
   $.get(searchFor,
