@@ -3,6 +3,7 @@
 
 <head>
   <%- include ("../partials/header.ejs") %>
+  <script type="module" src="/javascripts/uxi.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,6 @@
   <div class="container">
     <a type="button" class="btn btn-lg btn-primary" href="/google/"><span class="glyphicon glyphicon-search"></span>
       Google Books Search</a>
-
   </div>
 
   <div class="container">
@@ -60,7 +60,7 @@
     <div class="row">
       <form>
         <label for="task">API Select Task:</label>
-        <select id="task" name="type" onchange="doTask()">
+        <select id="task" name="type">
           <option value="01">Search All Patrons</option>
           <option value="02">Search By ID</option>
           <option value="03">Search By Last Name</option>
@@ -81,7 +81,7 @@
 
   </div>
   </div>
-  <script src="/javascripts/task.js">
+  <script type="module" src="/javascripts/task.js">
     doTask()
   </script>
 </body>

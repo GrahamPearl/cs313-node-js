@@ -6,7 +6,7 @@
 </head>
 
 <body><%- include ("../partials/nav.ejs") %>
-    <script src="/javascripts/google.js"></script>
+    <script type="module" src="/javascripts/google.js"></script>
 
     <h1>Google API Search</h1>
     <p>Enter details of the book that you want to search using Google Books</p>
@@ -17,38 +17,76 @@
         <label class="search_title" for="title">Title:</label>
         <input class="search_title" id="search_title" name="title" type="text" value="Mort" />
 
+        <label for="task_custom">Customize Search:</label>
+        <select id="task_custom" name="task_custom">
+            <option value="0">Type of Book</option>
+            <option value="1">Additional Fields</option>
+            <option value="2">Order By</option>
+            <option value="3">Apply Search Filter</option>
+        </select>
+
         <label class="search_types" for="">Type of Books:</label>
         <div class="search_types">
             <div class="row">
                 <label for="search_free">Free Books</label>
-                <input class="search_free" id="search_free" name="search_free" type="checkbox" value="free-books">
+                <input class="search_free" id="search_free" name="search_free" type="checkbox">
                 <label for="search_paid">Paid Books</label>
-                <input class="search_paid" id="search_paid" name="search_paid" type="checkbox" value="paid-books">
+                <input class="search_paid" id="search_paid" name="search_paid" type="checkbox">
             </div>
             <div class="row">
                 <label for="search_part">Partial E-Books</label>
-                <input class="search_part" id="search_part" name="search_part" type="checkbox" value="part-books">
+                <input class="search_part" id="search_part" name="search_part" type="checkbox">
                 <label for="search_full">Full E-Books</label>
-                <input class="search_full" id="search_full" name="search_full" type="checkbox" value="full-books">
+                <input class="search_full" id="search_full" name="search_full" type="checkbox">
                 <label for="search_ebook">E-Books</label>
-                <input class="search_ebook" id="search_ebook" name="search_ebook" type="checkbox" value="e-books">
+                <input class="search_ebook" id="search_ebook" name="search_ebook" type="checkbox">
             </div>
         </div>
-        <label for="task_order">Order By:</label>
-        <select id="task_order" name="task_order">
-            <option value="0">Relevance</option>
-            <option value="1">Newest</option>
-        </select>
-        <label for="task_filter">Apply Search Filter:</label>
-        <select id="task_filter" name="task_filter" onchange="UX.apply_filter()">
-            <option value="0">Search Exact Match By Author only</option>
-            <option value="1">Search Exact Match By Title only</option>
-            <option value="2">Search Exact Match By Author & Title</option>
-            <option value="3">Search Relax Match By Author</option>
-            <option value="4">Search Relax Match By Title</option>
-            <option value="5">Search Relax Match By Author & Title</option>
-        </select>
-        <input type="submit" value="Execute" onclick="find_google_api()" />
+
+        <label class="field_filter" for="">Additional Fields:</label>
+        <div class="field_filter">
+            <div class="row">
+                <label for="field_publisher">Publisher</label>
+                <input class="field_publisher" id="field_publisher" name="field_publisher" type="checkbox">
+                <label for="field_publishedDate">Published Date</label>
+                <input class="field_" id="field_" name="field_" type="checkbox">
+                <label for="field_description">Description</label>
+                <input class="field_description" id="field_description" name="field_description" type="checkbox">
+
+            </div>
+            <div class="row">
+                <label for="field_categories">Categories</label>
+                <input class="field_categories" id="field_categories" name="field_categories" type="checkbox">
+                <label for="field_thumbnail">Thumbnail</label>
+                <input class="field_thumbnail" id="field_thumbnail" name="field_thumbnail" type="checkbox">
+                <label for="field_rating">Rating</label>
+                <input class="field_rating" id="field_rating" name="field_rating" type="checkbox">
+            </div>
+        </div>
+
+
+        <label class="task_order" for="task_order">Order By:</label>
+        <div class="task_order">
+            <select id="task_order" name="task_order">
+                <option value="0">Relevance</option>
+                <option value="1">Newest</option>
+            </select>
+        </div>
+
+        <label class="task_filter" for="task_filter">Apply Search Filter:</label>
+        <div class="task_filter">
+            <select id="task_filter" name="task_filter">
+                <option value="0">Search Exact Match By Author only</option>
+                <option value="1">Search Exact Match By Title only</option>
+                <option value="2">Search Exact Match By Author & Title</option>
+                <option value="3">Search Relax Match By Author</option>
+                <option value="4">Search Relax Match By Title</option>
+                <option value="5">Search Relax Match By Author & Title</option>
+            </select>
+        </div>
+
+        <input id="btn-submit" type="submit" value="Execute"/>
+
     </div>
 
     <%- include ("../partials/report.ejs") %>
