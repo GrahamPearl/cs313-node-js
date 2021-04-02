@@ -1,23 +1,27 @@
-import { UXI } from './uxi.js';
+import {
+    UXI
+} from './uxi.js';
 
 const build_table_google = (info) => {
     $('#data-table').bootstrapTable({
         formatLoadingMessage: function () {
             return '<b>Data has been loaded - please see below</b>';
         },
-        "pagingType": "simple",
+        "pagination": true,
+        "smartDisplay": true,
+        "pagingType": "simple",        
         columns: [{
             field: 'authors',
-            title: 'Authors'
+            title: 'Authors: '
         }, {
             field: 'title',
-            title: 'Title'
+            title: 'Title: '
         }, {
             field: 'ISBN_10',
-            title: 'ISBN-10'
+            title: 'ISBN-10: '
         }, {
             field: 'ISBN_13',
-            title: 'ISBN-13'
+            title: 'ISBN-13: '
         }]
         //,data: info
     })
@@ -120,7 +124,7 @@ class Render_JSON extends Object {
                 }
             }
 
-         render.items.push(item);
+            render.items.push(item);
         }
         return render.items;
     }
@@ -128,11 +132,10 @@ class Render_JSON extends Object {
 
 class UX extends Object {
     static apply_custom() {
-    let filter_type = document.getElementById("task_custom").value;
+        let filter_type = document.getElementById("task_custom").value;
     }
 
-    static apply_filter() {
-    }
+    static apply_filter() {}
 }
 
 const find_google_api = () => {
@@ -153,8 +156,8 @@ const find_google_api = () => {
     console.log("Performing GOOGLE API Search:" + searchFor)
 
     $.get(searchFor,
-        function (data) {                        
-            build_table_google(); 
+        function (data) {
+            build_table_google();
             $('#data-table').bootstrapTable('load', Render_JSON.apply(data))
         });
 }
@@ -167,18 +170,17 @@ const task_customization = () => {
         "task_order",
         "task_filter"
     ])
-    switch (custom_type)
-    {
-        case '0':            
+    switch (custom_type) {
+        case '0':
             UXI.show_selected("search_types");
             break;
-        case '1':            
+        case '1':
             UXI.show_selected("field_filter");
             break;
-        case '2':            
+        case '2':
             UXI.show_selected("task_order");
             break;
-        case '3':            
+        case '3':
             UXI.show_selected("task_filter");
             break;
     }
@@ -189,10 +191,24 @@ class UXHandler extends Object {
     static task_customization = task_customization;
 }
 
-document.getElementById("task_custom").onclick = function() { UXHandler.task_customization(); };
-document.getElementById("task_order").onclick = function() {  };
-document.getElementById("task_filter").onclick = function() { UX.apply_filter(); };
-document.getElementById("btn-submit").onclick =  function() { UXHandler.find_google_api(); };
+document.getElementById("task_custom").onclick = function () {
+    UXHandler.task_customization();
+};
+document.getElementById("task_order").onclick = function () {};
+document.getElementById("task_filter").onclick = function () {
+    UX.apply_filter();
+};
+document.getElementById("btn-submit").onclick = function () {
+    UXHandler.find_google_api();
+};
+
+UXI.set_all_in_list_display_as([
+    "search_types",
+    "field_filter",
+    "task_order",
+    "task_filter"
+]);
+
 
 /*UXI.set_all_in_list_display_as([
     "search_types",

@@ -3,6 +3,9 @@ function build_table_books(info) {
     formatLoadingMessage: function () {
       return '<b>Data is being loaded - please wait</b>';
     },
+    "pagination": true,
+    "smartDisplay": true,
+    "pagingType": "simple",
 
     columns: [{
       field: 'id',
@@ -24,6 +27,9 @@ function build_table_patrons(info) {
     formatLoadingMessage: function () {
       return '<b>Data is being loaded - please wait</b>';
     },
+    "pagination": true,
+    "smartDisplay": true,
+    "pagingType": "simple",
     columns: [{
       field: 'id',
       title: 'Item ID'
