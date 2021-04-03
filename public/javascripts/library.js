@@ -24,9 +24,3 @@ class UXHandler extends Object {
 document.getElementById("task").onclick =  function() {  
   UXHandler.doTask();
 };
-
-UXI.set_all_in_list_display_as([
-    "search_id",
-    "search_title",
-    "search_email"        
-])

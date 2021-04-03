@@ -10,25 +10,29 @@
     <h1>Library Branches Search</h1>
     <p>Enter details of the branch that you want to search for</p>
     <div class="form">
-        <label for="task">Search By:</label>
-        <select id="task" name="type">
-            <option value="01">Search By ID</option>
-            <option value="02">Search By Title</option>
-            <option value="03">Search By Email</option>
-        </select>
-        
         <label class="search_id" for="id">ID:</label>
-        <input class="search_id" name="id" type="number" />
+        <input class="search_id" name="id" type="number" /> 
         <label class="search_title" for="title">Title:</label>
-        <input class="search_title" name="title" type="text" />
+        <input class="search_title" name="title" type="text" /> 
         <label class="search_email" for="email">Email:</label>
         <input class="search_email" name="email" type="email" />
-        
-        <input type="submit" value="submit" onclick="find_libraries_all()" />
+        <label for="task">Search By:</label>
+        <select id="task" name="type">
+          <option value="01">Search By ID</option>
+          <option value="02">Search By Title</option>
+          <option value="03">Search By Email</option>          
+        </select>        
+        <input type="submit" value="submit" onclick="find_libraries_all()"/>       
     </div>
+<<<<<<< HEAD
     <script type="module" src="/javascripts/library.js">doTask()</script>
 
     <%- include ("../partials/report.ejs") %>
+=======
+    <script type="module" src="/javascripts/library.js">
+        doTask()
+      </script>
+>>>>>>> parent of 25d0d8f... Updates to search
     <%- include ("../partials/card_nav.ejs") %>
 =======
     <form action="/library" method="get">

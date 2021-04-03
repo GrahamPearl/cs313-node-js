@@ -14,7 +14,6 @@ const router_api = require('express').Router()
     .get('/find_book_by_author', (req, res) => API.select_book_by_author(req, res))
     .get('/find_book_by_title', (req, res) => API.select_book_by_title(req, res))
     .get('/insert_book', (req, res) => API.insert_book(req, res))
-    .get('/find_library_all', (req, res) => API.select_all_branches(req, res))
-    //
+    
     
 module.exports = router_api;
