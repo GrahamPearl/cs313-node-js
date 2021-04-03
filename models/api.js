@@ -109,7 +109,7 @@ class API extends Object {
   }
 
   static async select_book_by_isbn(request, response) {
-    const isbn = '%'+request.query.isbn+'%';
+    const isbn = request.query.isbn;
     const paramSQL = [isbn];
     const dataDB = await db.search('SELECT * FROM books WHERE isbn Like $1;', paramSQL, null, response, response);
 
