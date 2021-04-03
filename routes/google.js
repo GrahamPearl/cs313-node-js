@@ -1,25 +1,13 @@
+//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const GOOGLE = require('../models/google-books');
 
 const router_google =
   require('express').Router()
   .get('/', (req, res) => res.render('pages/google'))
-  .get('/append', (req, res) => res.render('pages/google-found'))
-  .get('/found', (req, res) => res.render('pages/google-found'))  
-  .get('/API', (req, res) => {
-    console.log(req.query);
-    let params = {
-      title: req.query.title,
-      author: req.query.author
-    }
-
-    res.locals.title = req.query.title;
-    res.locals.url   = req.originalUrl;
-    
-    res.locals.author = JSON.stringify(req.query.author);
-    res.locals.title = JSON.stringify(req.query.title);
-    res.render('pages/google-found', params);
-
-  })
+  //.get('/append', (req, res) => {
+  //  insert_google_api(req, res);
+  //})
+  .get('/found', (req, res) => res.render('pages/google-found'))
   .get('/db', async (req, res) => {
 
   });

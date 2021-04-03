@@ -20,10 +20,9 @@ class Render_JSON extends Object {
             let isbn13 = UXI.safeExtractValueOfItem(isbns, "type", "ISBN_13", "identifier");
 
             document.getElementById("info_ISBN_10").value = isbn10;
-            document.getElementById("info_ISBN_13").value = isbn13;           
+            document.getElementById("info_ISBN_13").value = isbn13;
         }
         document.getElementById("item_preview").href = UXI.safeExtract(data.items[0].volumeInfo.previewLink);
-        //UXI.safeExtract(data.items[0].volumeInfo.imageLinks.smallThumbnail);
 
         //;
         //document.getElementById("info_in_library").value = data.items.volumeInfo.;
@@ -44,6 +43,19 @@ const find_google_api = () => {
             });
     }
 }
+
+const insert_google_api = () => {    
+
+    let searchFor = "" + params.id;
+    console.log("Performing Add to Library");
+    console.log("Performing Search: " + searchFor);
+
+    $.get(searchFor,
+        function (data) {
+            $('#data-table').bootstrapTable('load', Render_JSON.apply(data))
+        });
+}
+
 
 class UXHandler extends Object {
     static find_google_api = find_google_api;

@@ -14,9 +14,9 @@ const build_table_google = (info) => {
                 field: "id",
                 title: "Action",
                 formatter: function (value, row) {
-                    let items = '';//+value+' ';
+                    let items = '';//+value+' ';                    
                     items += '<a type="button" class="btn btn-primary" role="button" href="/google/found?id='+value+'"><i class="far fa-eye"></i></a>';
-                    items += '<a type="button" class="btn btn-success" role="button" href="/google/found?id='+value+'"><i class="fa fa-plus"></i></a>';
+                    //items += '<a type="button" class="btn btn-success" role="button" href="/google/append?id='+value+'"><i class="fa fa-plus"></i></a>';
                     return items;
                 }
             },
@@ -36,19 +36,6 @@ const build_table_google = (info) => {
         ]
         //,data: info
     })
-}
-
-const add_buttons_to_build_table = () => {
-    console.log("Reading Table");
-
-    $('#data-table tr').each(function () {
-        console.log("Reading Row");
-        let customButtons = $(this).find("td").eq(3).html();
-        customButtons.append('<button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>');
-        customButtons.append('<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>');
-        customButtons.append('<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>');
-
-    });
 }
 
 const apply_filter_to_item_append_criteria = (item, criteria) => {
@@ -114,8 +101,11 @@ class Render_JSON extends Object {
 
             item.id = UXI.safeExtract(value.id);
             item.title = UXI.safeExtract(value.volumeInfo.title);
-            UXI.safeExtractList(value.volumeInfo.authors,item.authors);
+            item.authors = UXI.safeExtract(data.items[0].volumeInfo.authors);
+            //UXI.safeExtractList(value.volumeInfo.authors,item.authors);
             
+            console.log("Authors: "+item.authors);
+
             item.ISBN_10 = UXI.safeExtractValueOfItem(value.volumeInfo.industryIdentifiers,"type","ISBN_10","identifier");
             item.ISBN_13 = UXI.safeExtractValueOfItem(value.volumeInfo.industryIdentifiers,"type","ISBN_13","identifier");
                         
@@ -126,10 +116,7 @@ class Render_JSON extends Object {
 }
 
 class UX extends Object {
-    static apply_custom() {
-        let filter_type = document.getElementById("task_custom").value;
-    }
-
+    static apply_custom() { let filter_type = document.getElementById("task_custom").value; }
     static apply_filter() {}
 }
 
@@ -155,7 +142,7 @@ const find_google_api = () => {
             build_table_google();
             $('#data-table').bootstrapTable('load', Render_JSON.apply(data))
         });
-}
+}  
 
 const task_customization = () => {
     let custom_type = document.getElementById("task_custom").value;
@@ -187,19 +174,13 @@ const task_customization = () => {
 
 class UXHandler extends Object {
     static find_google_api = find_google_api;
-    static task_customization = task_customization;
+    static task_customization = task_customization;       
 }
 
-document.getElementById("task_custom").onclick = function () {
-    UXHandler.task_customization();
-};
+document.getElementById("task_custom").onclick = function () { UXHandler.task_customization(); };
 document.getElementById("task_order").onclick = function () {};
-document.getElementById("task_filter").onclick = function () {
-    UX.apply_filter();
-};
-document.getElementById("btn-submit").onclick = function () {
-    UXHandler.find_google_api();
-};
+document.getElementById("task_filter").onclick = function () { UX.apply_filter(); };
+document.getElementById("btn-submit").onclick = function () { UXHandler.find_google_api(); };
 
 UXI.set_all_in_list_display_as([
     "search_types",
@@ -208,12 +189,3 @@ UXI.set_all_in_list_display_as([
     "task_viewer",
     "task_filter"
 ]);
-
-
-/*UXI.set_all_in_list_display_as([
-    "search_types",
-    "field_filter",
-    "task_order",
-    "task_filter"
-]);
-*/

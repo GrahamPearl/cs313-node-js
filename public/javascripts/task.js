@@ -106,7 +106,7 @@ const doTask = () => {
                     UXI.show_selected("search_book_title");
                     break;
                 case '10':
-                    link.action = "/API/insert_patron";
+                    link.action = "/API/insert_book";
                     UXI.set_all_in_list_display_as([
                         "search_book_isbn",
                         "search_book_author",

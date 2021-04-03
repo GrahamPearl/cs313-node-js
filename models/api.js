@@ -109,9 +109,9 @@ class API extends Object {
   }
 
   static async select_book_by_isbn(request, response) {
-    const isbn = request.query.isbn;
+    const isbn = '%'+request.query.isbn+'%';
     const paramSQL = [isbn];
-    const dataDB = await db.search('SELECT * FROM books WHERE isbn-10=$1 OR isbn-13=$1;', paramSQL, null, response, response);
+    const dataDB = await db.search('SELECT * FROM books WHERE isbn Like $1;', paramSQL, null, response, response);
 
     let params = {
       data: dataDB
@@ -142,12 +142,20 @@ class API extends Object {
   }
 
   static async insert_book(request, response) {
+    if ((!request.query.title) ||
+        (!request.query.author)        
+       ) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+
     const author = request.query.author;
     const title = request.query.title;
-    const isbn_10 = request.query.isbn_10;
-    const isbn_13 = request.query.isbn_13;
-    const paramSQL = [author, title];
-    const dataDB = await db.insert('INSERT INTO books(author,title,isbn-10,isbn-13) VALUES($1,$2,$3,$4);', paramSQL, null, response, response);
+    const isbn = request.query.isbn;
+    const paramSQL = [author, title, isbn];
+    const dataDB = await db.insert('INSERT INTO books(author,title,isbn) VALUES($1,$2,$3);', paramSQL, null, response, response);
 
     let params = {
       data: dataDB

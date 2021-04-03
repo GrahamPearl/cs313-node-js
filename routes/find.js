@@ -1,6 +1,5 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-
 const router_find =
     require('express').Router()
     .use('/books', async (req, res) => {

@@ -23,7 +23,7 @@
     "jquery": "^3.6.0",
     "pg": "^8.5.1",
     "requirejs": "^2.3.6",
-    "sequelize": "^6.5.0",
+    "sequelize": "^6.6.2",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
