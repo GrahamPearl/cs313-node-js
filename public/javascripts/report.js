@@ -113,11 +113,11 @@ function find_libraries_all() {
   let url = 'https://tranquil-river-49994.herokuapp.com/API/';
   let filters = 'id='+params[0]+'&title='+params[1]+'&email='+params[0]+'';
   switch (task) {
-    case '01': url += ""; break;
-    case '02': url += ""; break;
-    case '03': url += ""; break;
+    case '01': url += "find_branch_by_id"; break;
+    case '02': url += "find_branch_by_title"; break;
+    case '03': url += "find_branch_by_email"; break;
     default:
-        url += "find_branch_by_id";
+        url += "find_branchs_all";
         break;        
 }  find(url+filters,build_table_libraries);
 }
