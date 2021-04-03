@@ -42,7 +42,7 @@ class API extends Object {
   static async select_patron_by_last(request, response) {
     const findBy = request.query.name_last;
     const paramSQL = [findBy];
-    const dataDB = await db.search('SELECT * FROM Patrons WHERE last like $1;', paramSQL, null, response, response);
+    const dataDB = await db.search('SELECT * FROM Patrons WHERE last like %$1%;', paramSQL, null, response, response);
 
     let params = {
       data: dataDB
@@ -53,7 +53,7 @@ class API extends Object {
   static async select_patron_by_first(request, response) {
     const findBy = request.query.name_first;
     const paramSQL = [findBy];
-    const dataDB = await db.search('SELECT * FROM Patrons WHERE first like $1;', paramSQL, null, response, response);
+    const dataDB = await db.search('SELECT * FROM Patrons WHERE first like %$1%;', paramSQL, null, response, response);
 
     let params = {
       data: dataDB
