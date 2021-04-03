@@ -3,6 +3,8 @@ const GOOGLE = require('../models/google-books');
 const router_google =
   require('express').Router()
   .get('/', (req, res) => res.render('pages/google'))
+  .get('/append', (req, res) => res.render('pages/google-found'))
+  .get('/found', (req, res) => res.render('pages/google-found'))  
   .get('/API', (req, res) => {
     console.log(req.query);
     let params = {

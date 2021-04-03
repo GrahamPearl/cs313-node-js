@@ -2,16 +2,44 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head><%- include ("../partials/header.ejs") %>
+<head><%- include ("../partials/header.ejs") %>    
 </head>
 
-<body><%- include ("../partials/nav.ejs") %>    
+<body class="fade"><%- include ("../partials/nav.ejs") %>    
+    <script type="module" src="/javascripts/google-found.js"></script>
     <div id="content">
+        <div class="form">
+            <h3><span class="glyphicon glyphicon-search"></span> Google Book</h3>
+            <div>
+                <a id="item_preview" type="button" class="btn btn-lg btn-primary" href="#"><span class="glyphicon glyphicon-eye-open"></span>
+                    Google Preview Available</a>
+            </div>
+            <label class="info_author" for="info_author">Author:</label>
+            <input class="info_author" id="info_author" name="info_author" type="text" value="" />
+            <label class="info_title" for="info_title">Title:</label>
+            <input class="info_title" id="info_title" name="title" type="text" value="" />
+            <label class="info_ISBN_10" for="info_ISBN_10">ISBN-10:</label>
+            <input class="info_ISBN_10" id="info_ISBN_10" name="info_ISBN_10" type="text" value="" />
+            <label class="info_ISBN_13" for="info_ISBN_13">ISBN-13:</label>
+            <input class="info_ISBN_13" id="info_ISBN_13" name="info_ISBN_13" type="text" value="" />
+            <label class="info_publisher" for="info_publisher">Publisher:</label>
+            <input class="info_publisher" id="info_publisher" name="info_publisher" type="text" value="" />
+            <label class="info_publishedDate" for="info_publishedDate">Published Date:</label>
+            <input class="info_publishedDate" id="info_publishedDate" name="info_publishedDate" type="text" value="" />
+
+            <label class="info_averageRating" for="info_averageRating">Average Rating:</label>
+            <input class="info_averageRating" id="info_averageRating" name="info_averageRating" type="text" value="" />
+            <label class="info_categories" for="info_categories">Categories:</label>
+            <input class="info_categories" id="info_categories" name="info_categories" type="text" value="" />
+            <label class="info_in_library" for="info_in_library">In Library:</label>
+            <input class="info_in_library" id="info_in_library" name="info_in_library" type="text" value="" />
+            <img id="info_thumbnail" src="/images/image-not-found.png" class="img-thumbnail float-end" alt="Thumbnail of image not found">
+            <textarea id="info_description" class="info_description"
+                name="info_description">Enter text here...</textarea>
+        </div>
+
     </div>
-    <div id="books">
-    </div>
-    
-    <%- include ("../partials/report.ejs") %>
+
     <%- include ("../partials/card_nav.ejs") %>
 </body>
 

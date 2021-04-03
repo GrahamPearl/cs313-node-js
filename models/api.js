@@ -144,8 +144,10 @@ class API extends Object {
   static async insert_book(request, response) {
     const author = request.query.author;
     const title = request.query.title;
+    const isbn_10 = request.query.isbn_10;
+    const isbn_13 = request.query.isbn_13;
     const paramSQL = [author, title];
-    const dataDB = await db.insert('INSERT INTO books(author,title) VALUES($1,$2);', paramSQL, null, response, response);
+    const dataDB = await db.insert('INSERT INTO books(author,title,isbn-10,isbn-13) VALUES($1,$2,$3,$4);', paramSQL, null, response, response);
 
     let params = {
       data: dataDB

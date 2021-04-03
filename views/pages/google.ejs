@@ -5,7 +5,7 @@
 <head><%- include ("../partials/header.ejs") %>
 </head>
 
-<body><%- include ("../partials/nav.ejs") %>
+<body><%- include ("../partials/nav.ejs") %>    
     <script type="module" src="/javascripts/google.js"></script>
 
     <h1>Google API Search</h1>
@@ -22,7 +22,8 @@
             <option value="0">Type of Book</option>
             <option value="1">Additional Fields</option>
             <option value="2">Order By</option>
-            <option value="3">Apply Search Filter</option>
+            <option value="3">Viewer</option>
+            <option value="4">Apply Search Filter</option>
         </select>
 
         <label class="search_types" for="">Type of Books:</label>
@@ -73,10 +74,10 @@
             </select>
         </div>
 
-        <label class="task_table" for="task_table">Table:</label>
-        <div class="task_table">
-            <select id="task_table" name="task_order">
-                <option value="0">card-</option>
+        <label class="task_viewer" for="task_viewer">Viewer:</label>
+        <div class="task_viewer">
+            <select id="task_viewer" name="task_viewer">
+                <option value="0">table-view</option>
                 <option value="1">card-view</option>
             </select>
         </div>
@@ -93,11 +94,16 @@
             </select>
         </div>
 
-        <input id="btn-submit" type="submit" value="Execute"/>
+        <input id="btn-submit" type="submit" value="Execute" />
 
     </div>
+    <span class="glyphicon glyphicon-search"></span>    
 
-    <%- include ("../partials/report.ejs") %>
+    <div class="container">
+        <table class="table col-md-12 table-bordered table-striped" id="data-table">
+        </table>
+        <a id="link-to-data-table"></a>
+    </div>
     <%- include ("../partials/card_nav.ejs") %>
 </body>
 

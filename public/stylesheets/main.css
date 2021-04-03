@@ -10,6 +10,16 @@ body {
   color: #000000;
 }
 
+body.fadeIn {
+  opacity: 1;
+  transition-duration: 1.7s;
+  transition-property: opacity;
+}
+
+body.fade {
+  opacity: 0;
+}
+
 form,
 .form {
   display: grid;
@@ -24,6 +34,8 @@ form,
 
 form input,
 form select,
+form textarea,
+.form textarea,
 .form input,
 .form select {
   background: #fff;
@@ -32,6 +44,8 @@ form select,
 
 form button,
 form select,
+form textarea,
+.form textarea,
 .form button,
 .form select {
   background: lightgrey;
@@ -39,6 +53,12 @@ form select,
   width: 100%;
   border: 0;
 }
+
+form textarea,
+.form textarea {
+  min-height: 200px;
+}
+
 
 form button:hover,
 .form button:hover {

@@ -9,20 +9,31 @@ const build_table_google = (info) => {
         },
         "pagination": true,
         "smartDisplay": true,
-        "pagingType": "simple",        
+        "pagingType": "simple",
         columns: [{
-            field: 'authors',
-            title: 'Authors: '
-        }, {
-            field: 'title',
-            title: 'Title: '
-        }, {
-            field: 'ISBN_10',
-            title: 'ISBN-10: '
-        }, {
-            field: 'ISBN_13',
-            title: 'ISBN-13: '
-        }]
+                field: "id",
+                title: "Action",
+                formatter: function (value, row) {
+                    let items = '';//+value+' ';
+                    items += '<a type="button" class="btn btn-primary" role="button" href="/google/found?id='+value+'"><i class="far fa-eye"></i></a>';
+                    items += '<a type="button" class="btn btn-success" role="button" href="/google/found?id='+value+'"><i class="fa fa-plus"></i></a>';
+                    return items;
+                }
+            },
+            {
+                field: 'authors',
+                title: 'Authors: '
+            }, {
+                field: 'title',
+                title: 'Title: '
+            }, {
+                field: 'ISBN_10',
+                title: 'ISBN-10: '
+            }, {
+                field: 'ISBN_13',
+                title: 'ISBN-13: '
+            }
+        ]
         //,data: info
     })
 }
@@ -101,29 +112,13 @@ class Render_JSON extends Object {
         for (let [key, value] of Object.entries(found)) {
             let item = {};
 
-            if (typeof value.volumeInfo.title !== 'undefined') {
-                let title = value.volumeInfo.title;
-                item.title = title;
-            }
-
-            if (typeof value.volumeInfo.authors !== 'undefined') {
-                let authors = value.volumeInfo.authors;
-                item.authors = [];
-                for (let [key, author] of Object.entries(authors)) {
-                    item.authors.push(author);
-                }
-            }
-
-            if (typeof value.volumeInfo.industryIdentifiers !== 'undefined') {
-                let identifiers = value.volumeInfo.industryIdentifiers;
-                for (let [key, identify] of Object.entries(identifiers)) {
-                    if (identifiers[key].type !== 'undefined') {
-                        if (identifiers[key].type == 'ISBN_13') item.ISBN_13 = identify.identifier;
-                        if (identifiers[key].type == 'ISBN_10') item.ISBN_10 = identify.identifier;
-                    }
-                }
-            }
-
+            item.id = UXI.safeExtract(value.id);
+            item.title = UXI.safeExtract(value.volumeInfo.title);
+            UXI.safeExtractList(value.volumeInfo.authors,item.authors);
+            
+            item.ISBN_10 = UXI.safeExtractValueOfItem(value.volumeInfo.industryIdentifiers,"type","ISBN_10","identifier");
+            item.ISBN_13 = UXI.safeExtractValueOfItem(value.volumeInfo.industryIdentifiers,"type","ISBN_13","identifier");
+                        
             render.items.push(item);
         }
         return render.items;
@@ -168,6 +163,7 @@ const task_customization = () => {
         "search_types",
         "field_filter",
         "task_order",
+        "task_viewer",
         "task_filter"
     ])
     switch (custom_type) {
@@ -181,6 +177,9 @@ const task_customization = () => {
             UXI.show_selected("task_order");
             break;
         case '3':
+            UXI.show_selected("task_viewer");
+            break;
+        case '4':
             UXI.show_selected("task_filter");
             break;
     }
@@ -206,6 +205,7 @@ UXI.set_all_in_list_display_as([
     "search_types",
     "field_filter",
     "task_order",
+    "task_viewer",
     "task_filter"
 ]);
 

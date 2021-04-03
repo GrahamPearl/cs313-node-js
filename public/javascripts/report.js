@@ -1,9 +1,9 @@
 function btnFormatter(value, row) {
 //+value+
   let items = ''+value+' ';
-      items += '<button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>';
-      items += '<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>';
-      items += '<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>';
+      items += '<button type="button" class="btn btn-primary" href="#"><i class="far fa-eye"></i></button>';
+      items += '<button type="button" class="btn btn-success" href="#"><i class="fas fa-edit"></i></button>';
+      items += '<button type="button" class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></button>';
   return items;  
 }
 
@@ -12,10 +12,9 @@ function add_buttons_to_build_table() {
   $('#data-table tr').each(function () {
     console.log("Reading Row");
     let customButtons = $(this).find("td").eq(3).html();
-    customButtons.append('<button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>');
-    customButtons.append('<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>');
+    customButtons.append('<button type="button" class="btn btn-primary" href="#"><i class="far fa-eye"></i></button>');
+    customButtons.append('<button type="button" class="btn btn-success" href="#"><i class="fas fa-edit"></i></button>');
     customButtons.append('');
-
   });
 }
 
