@@ -11,15 +11,23 @@
     <span class="glyphicon glyphicon-book"></span>
     <p>Enter details of the book that you want to search for</p>
     <div class="form">
-        <label for="isbn">ID:</label>
-        <input id="search_isbn" name="isbn" type="text" value="R0Aw51Xmci4C" /> <br />
-        <label for="author">Author:</label>
-        <input id="search_author" name="author" type="text" value="Terry Prachett" /> <br />
-        <label for="title">Title:</label>
-        <input id="search_title" name="title" type="text" value="Mort" /> <br />
+        <label for="task">Search By:</label>
+        <select id="task" name="type">
+          <option value="01">Search By ID</option>
+          <option value="02">Search By Author</option>
+          <option value="03">Search By Title</option>          
+        </select>
+
+        <label class="search_01" for="isbn">ID:</label>
+        <input class="search_01" id="search_isbn" name="isbn" type="text" value="R0Aw51Xmci4C" /> 
+        <label class="search_02" for="author">Author:</label>
+        <input class="search_02" id="search_author" name="author" type="text" value="Terry Prachett" />
+        <label class="search_03" for="title">Title:</label>
+        <input class="search_03" id="search_title" name="title" type="text" value="Mort" /> 
         <input type="submit" value="Submit" onclick="find_books_all()"/>
     </div>
 
+    <script type="module" src="/javascripts/library-task.js">doTask()</script>
     <%- include ("../partials/report.ejs") %>
 
     <div class="container">

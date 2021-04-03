@@ -4,14 +4,14 @@ const doTask = () => {
     let task = document.getElementById("task").value;
     let link = '';
     UXI.set_all_in_list_display_as([
-        "search_id",
-        "search_title",
-        "search_email"        
+        "search_01",
+        "search_02",
+        "search_03"        
     ])
     switch (task) {
-        case '01': UXI.show_selected("search_id"); break;
-        case '02': UXI.show_selected("search_title"); break;
-        case '03': UXI.show_selected("search_email"); break;        
+        case '01': UXI.show_selected("search_01"); break;
+        case '02': UXI.show_selected("search_02"); break;
+        case '03': UXI.show_selected("search_03"); break;        
         default:
             break;
     }

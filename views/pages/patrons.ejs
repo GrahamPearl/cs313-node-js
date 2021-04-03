@@ -11,15 +11,23 @@
     <span class="glyphicon glyphicon-user"></span>
     <p>Enter details of the patron that you want to search for</p>
     <div class="form">
-        <label for="id">ADMIN NO:</label>
-        <input name="id" type="number" /> <br />
-        <label for="name_last">Last Name:</label>
-        <input name="name_last" type="text" /> <br />
-        <label for="name_first">First Name:</label>
-        <input name="name_first" type="text" /> <br />
+        <label for="task">Search By:</label>
+        <select id="task" name="type">
+          <option value="01">Search By ID</option>
+          <option value="02">Search By Last Name</option>
+          <option value="03">Search By First Name</option>          
+        </select>
+
+        <label class="search_01" for="id">ADMIN NO:</label>
+        <input class="search_01" name="id" type="number" /> 
+        <label class="search_02" for="name_last">Last Name:</label>
+        <input class="search_02" name="name_last" type="text" /> 
+        <label class="search_03" for="name_first">First Name:</label>
+        <input class="search_03" name="name_first" type="text" />
         <input type="submit" value="Submit" onclick="find_patrons_all()"/>
     </div>
     
+    <script type="module" src="/javascripts/library-task.js">doTask()</script>
     <%- include ("../partials/report.ejs") %>
     <%- include ("../partials/card_nav.ejs") %>    
 </body>
