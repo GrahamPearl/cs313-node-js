@@ -6,28 +6,14 @@ const handleTask = () => {
     console.log("Task: " + task);
 
     switch (task) {
-        case "01":
-            urlResponse = "/API/find_patrons_all";
-            break;
-        case "02":
-            urlResponse = "/API/find_patron_by_id";
-            break;
-        case "03":
-            urlResponse = "/API/find_patron_by_last";
-        case "04":
-            urlResponse = "/API/find_patron_by_first";
-        case "06":
-            urlResponse = "/API/find_books_all";
-            break;
-        case "07":
-            urlResponse = "/API/find_books_all";
-            break;
-        case "08":
-            urlResponse = "/API/find_books_all";
-            break;
-        case "09":
-            urlResponse = "/API/find_books_all";
-            break;
+        case "01": urlResponse = "/API/find_patrons_all"; break;
+        case "02": urlResponse = "/API/find_patron_by_id";  break;
+        case "03": urlResponse = "/API/find_patron_by_last"; break;
+        case "04": urlResponse = "/API/find_patron_by_first"; break
+        case "06": urlResponse = "/API/find_books_all";  break;
+        case "07": urlResponse = "/API/find_books_all";  break;
+        case "08": urlResponse = "/API/find_books_all";  break;
+        case "09": urlResponse = "/API/find_books_all";  break;
         default:
             urlResponse = "pages/index";
     }
@@ -53,23 +39,17 @@ const doTask = () => {
         case '05':
             link = document.getElementById('patrons');
             switch (task) {
-                case '01':
-                    link.action = "/API/find_patrons_all";
-                    break;
-                case '02':
-                    link.action = "/API/find_patron_by_id";
+                case '01': link.action = "/API/find_patrons_all"; break;
+                case '02': link.action = "/API/find_patron_by_id";
                     UXI.show_selected("search_patron_id");
                     break;
-                case '03':
-                    link.action = "/API/find_patron_by_last";
+                case '03': link.action = "/API/find_patron_by_last";
                     UXI.show_selected("search_patron_name_last");
                     break;
-                case '04':
-                    link.action = "/API/find_patron_by_first";
+                case '04': link.action = "/API/find_patron_by_first";
                     UXI.show_selected("search_patron_name_first");
                     break;
-                case '05':
-                    link.action = "/API/insert_patron";
+                case '05': link.action = "/API/insert_patron";
                     UXI.set_all_in_list_display_as([
                         "search_book_isbn",
                         "search_book_author",
@@ -90,23 +70,17 @@ const doTask = () => {
         case '10':
             link = document.getElementById('books');
             switch (task) {
-                case '06':
-                    link.action = "/API/find_books_all";
-                    break;
-                case '07':
-                    link.action = "/API/find_book_by_isbn";
+                case '06': link.action = "/API/find_books_all"; break;
+                case '07': link.action = "/API/find_book_by_isbn";
                     UXI.show_selected("search_book_isbn");
                     break;
-                case '08':
-                    link.action = "/API/find_book_by_author";
+                case '08': link.action = "/API/find_book_by_author";
                     UXI.show_selected("search_book_author");
                     break;
-                case '09':
-                    link.action = "/API/find_book_by_title";
+                case '09': link.action = "/API/find_book_by_title";
                     UXI.show_selected("search_book_title");
                     break;
-                case '10':
-                    link.action = "/API/insert_book";
+                case '10': link.action = "/API/insert_book";
                     UXI.set_all_in_list_display_as([
                         "search_book_isbn",
                         "search_book_author",

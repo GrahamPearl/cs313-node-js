@@ -14,6 +14,10 @@ const router_api = require('express').Router()
     .get('/find_book_by_author', (req, res) => API.select_book_by_author(req, res))
     .get('/find_book_by_title', (req, res) => API.select_book_by_title(req, res))
     .get('/insert_book', (req, res) => API.insert_book(req, res))
+    .get('/find_branchs_all', (req, res) => API.select_all_books(req, res))    
+    .get('/find_branch_by_id', (req, res) => API.select_branch_by_id(req, res))
+    .get('/find_branch_by_title', (req, res) => API.select_branch_by_title(req, res))
+    .get('/find_branch_by_email', (req, res) => API.select_branch_by_email(req, res))
     
     
 module.exports = router_api;
