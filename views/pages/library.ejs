@@ -22,22 +22,10 @@
         <label class="search_02" for="title">Title:</label>
         <input class="search_02" name="title" type="text" /> 
         <label class="search_03" for="email">Email:</label>
-        <input class="search_04" name="email" type="email" />                
+        <input class="search_03" name="email" type="email" />                
         <input type="submit" value="submit" onclick="find_libraries_all()"/>       
     </div>
     <script type="module" src="/javascripts/library-task.js">doTask()</script>
-    <%- include ("../partials/card_nav.ejs") %>
-
-    <form action="/library" method="get">
-        <label for="id">ID:</label>
-        <input name="id" type="number" /> <br />
-        <label for="title">Title:</label>
-        <input name="title" type="text" /> <br />
-        <label for="email">Email:</label>
-        <input name="email" type="email" /> <br />
-        <input type="submit" value="Submit" />
-    </form>
-
     <%- include ("../partials/card_nav.ejs") %>    
 </body>
 
