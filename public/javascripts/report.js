@@ -86,17 +86,17 @@ function find(url, callback) {
 }
 
 function get_fields() {
-  let search_01 = document.getElementById('search_01').value.replace(/ /g, "+");;
-  let search_02 = document.getElementById('search_02').value.replace(/ /g, "+");;
-  let search_03 = document.getElementById('search_03').value.replace(/ /g, "+");;
-  return [search_01, search_02, search_03];
+  let search_01 = document.getElementById('search_01').value.replace(/ /g, "+");
+  let search_02 = document.getElementById('search_02').value.replace(/ /g, "+");
+  let search_03 = document.getElementById('search_03').value.replace(/ /g, "+");
+  return [search_01, '%'+search_02+'%', '%'+search_03+'%'];
 }
 
 function find_books_all() {  
   let params = get_fields();
   let task =  document.getElementById("task").value;
   let url = 'https://tranquil-river-49994.herokuapp.com/API/';
-  let filters = 'isbn='+params[0]+'&author='+params[1]+'&title='+params[0]+'';  
+  let filters = '?isbn='+params[0]+'&author='+params[1]+'&title='+params[0]+'';  
   switch (task) {
     case '01': url += "find_book_by_isbn"; break;
     case '02': url += "find_book_by_author"; break;
@@ -104,14 +104,14 @@ function find_books_all() {
     default:
         url += "find_books_all";
         break;        
-}  find(url,build_table_books);
+}  find(url+filters,build_table_books);
 }
 
 function find_libraries_all() {
   let params = get_fields();
   let task =  document.getElementById("task").value;
   let url = 'https://tranquil-river-49994.herokuapp.com/API/';
-  let filters = 'id='+params[0]+'&title='+params[1]+'&email='+params[0]+'';
+  let filters = '?id='+params[0]+'&title='+params[1]+'&email='+params[0]+'';
   switch (task) {
     case '01': url += "find_branch_by_id"; break;
     case '02': url += "find_branch_by_title"; break;
