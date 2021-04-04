@@ -232,6 +232,19 @@ class API extends Object {
     response.json(params);
   }
 
+  static async update_branch(request, response) {
+    const id = request.query.id;
+    const title = request.query.title;
+    const email = request.query.email;
+    const paramSQL = [title, emai, id];
+    const dataDB = await db.insert('UPDATE branch SET title=$1,email=$2 WHERE id=$3;', paramSQL, null, response, response);
+
+    let params = {
+      data: dataDB
+    }
+    response.json(params);
+  }
+
 //==================================================================================================================
 //==================================================================================================================
 

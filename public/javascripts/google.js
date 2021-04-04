@@ -16,7 +16,6 @@ const build_table_google = (info) => {
                 formatter: function (value, row) {
                     let items = '';//+value+' ';                    
                     items += '<a type="button" class="btn btn-primary" role="button" href="/google/found?id='+value+'"><i class="far fa-eye"></i></a>';
-                    //items += '<a type="button" class="btn btn-success" role="button" href="/google/append?id='+value+'"><i class="fa fa-plus"></i></a>';
                     return items;
                 }
             },
