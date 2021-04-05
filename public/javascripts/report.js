@@ -80,7 +80,7 @@ function build_table_patrons() {
       title: 'First Name'
     }, {
       field: 'last',
-      title: 'Last Price'
+      title: 'Last Name'
     }],
   })
 }

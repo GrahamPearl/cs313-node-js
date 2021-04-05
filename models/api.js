@@ -143,8 +143,9 @@ class API extends Object {
 
   static async insert_book(request, response) {
     if ((!request.query.title) ||
-        (!request.query.author)        
-       ) {
+        (!request.query.author) ||
+        (!request.query.isbn)
+      ) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -153,9 +154,57 @@ class API extends Object {
 
     const author = request.query.author;
     const title = request.query.title;
-    const isbn = request.query.isbn;
+
+     const isbn = request.query.isbn;
     const paramSQL = [author, title, isbn];
     const dataDB = await db.insert('INSERT INTO books(author,title,isbn) VALUES($1,$2,$3);', paramSQL, null, response, response);
+
+    let params = {
+      data: dataDB
+    }
+    response.json(params);
+  }
+
+  static async insert_book_from_google_api(request, response) {
+    if ((!request.query.title) ||
+        (!request.query.author) ||
+        (!request.query.id_google)
+      ) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+
+    const author = request.query.author;
+    const title = request.query.title;
+    const id_google= request.query.id_google;
+    const isbn = request.query.isbn;
+    
+    const paramSQL = [author, title, id_google, isbn];
+    const dataDB = await db.insert('INSERT INTO books(author,title,id_google,isbn) VALUES($1,$2,$3,$4);', paramSQL, null, response, response);
+
+    let params = {
+      data: dataDB
+    }
+    response.json(params);
+  }
+
+  static async insert_book_with_params(request, response) {
+    if ((!request.query.fields) ||
+        (!request.query.values)        
+       ) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+
+    const fields = request.query.fields;
+    const values = request.query.values;
+
+    const paramSQL = [fields, params];
+    const dataDB = await db.insert('INSERT INTO books($1) VALUES($2);', paramSQL, null, response, response);
 
     let params = {
       data: dataDB
